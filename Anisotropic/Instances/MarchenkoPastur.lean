@@ -1,10 +1,14 @@
-import Anisotropic.Density.Count
-import Anisotropic.Density.Critical
-import Anisotropic.Density.GenProp
-import Anisotropic.Density.Ordering
-import Anisotropic.Density.SelfConsistent
-import Anisotropic.Density.Structure
-import Anisotropic.Density.Varrho
+module
+
+public import Anisotropic.Density.Count
+public import Anisotropic.Density.Critical
+public import Anisotropic.Density.GenProp
+public import Anisotropic.Density.Ordering
+public import Anisotropic.Density.SelfConsistent
+public import Anisotropic.Density.Structure
+public import Anisotropic.Density.Varrho
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

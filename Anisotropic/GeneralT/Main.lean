@@ -1,22 +1,26 @@
-import Anisotropic.Density.Count
-import Anisotropic.Density.Critical
-import Anisotropic.Density.GenProp
-import Anisotropic.Density.SelfConsistent
-import Anisotropic.Density.Stability.Bulk
-import Anisotropic.Density.Stability.Domains
-import Anisotropic.Density.Stability.EdgeTools
-import Anisotropic.Endpoints.Local
-import Anisotropic.Endpoints.Main
-import Anisotropic.Endpoints.Regions
-import Anisotropic.Endpoints.Resolvents
-import Anisotropic.Entrywise.Defs
-import Anisotropic.Entrywise.DiagModel
-import Anisotropic.Framework.Model
-import Anisotropic.GeneralT.Edges
-import Anisotropic.GeneralT.Limit
-import Anisotropic.GeneralT.Masses
-import Anisotropic.GeneralT.Model
-import Anisotropic.GeneralT.Spectra
+module
+
+public import Anisotropic.Density.Count
+public import Anisotropic.Density.Critical
+public import Anisotropic.Density.GenProp
+public import Anisotropic.Density.SelfConsistent
+public import Anisotropic.Density.Stability.Bulk
+public import Anisotropic.Density.Stability.Domains
+public import Anisotropic.Density.Stability.EdgeTools
+public import Anisotropic.Endpoints.Local
+public import Anisotropic.Endpoints.Main
+public import Anisotropic.Endpoints.Regions
+public import Anisotropic.Endpoints.Resolvents
+public import Anisotropic.Entrywise.Defs
+public import Anisotropic.Entrywise.DiagModel
+public import Anisotropic.Framework.Model
+public import Anisotropic.GeneralT.Edges
+public import Anisotropic.GeneralT.Limit
+public import Anisotropic.GeneralT.Masses
+public import Anisotropic.GeneralT.Model
+public import Anisotropic.GeneralT.Spectra
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

@@ -1,8 +1,12 @@
-import Anisotropic.LinAlg.Expansion
-import Anisotropic.LinAlg.Minor
-import Anisotropic.LinAlg.Ward
-import Anisotropic.Comparison.Notation
-import Anisotropic.Comparison.Words
+module
+
+public import Anisotropic.LinAlg.Expansion
+public import Anisotropic.LinAlg.Minor
+public import Anisotropic.LinAlg.Ward
+public import Anisotropic.Comparison.Notation
+public import Anisotropic.Comparison.Words
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

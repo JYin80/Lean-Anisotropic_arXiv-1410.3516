@@ -1,12 +1,16 @@
-import Anisotropic.Density.Count
-import Anisotropic.Density.Critical
-import Anisotropic.EdgeUniv.EntryBounds
-import Anisotropic.EdgeUniv.SmCount
-import Anisotropic.Entrywise.DiagModel
-import Anisotropic.Framework.Domination
-import Anisotropic.Framework.Model
-import Anisotropic.LinAlg.Expansion
-import Anisotropic.Rigidity.Defs
+module
+
+public import Anisotropic.Density.Count
+public import Anisotropic.Density.Critical
+public import Anisotropic.EdgeUniv.EntryBounds
+public import Anisotropic.EdgeUniv.SmCount
+public import Anisotropic.Entrywise.DiagModel
+public import Anisotropic.Framework.Domination
+public import Anisotropic.Framework.Model
+public import Anisotropic.LinAlg.Expansion
+public import Anisotropic.Rigidity.Defs
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

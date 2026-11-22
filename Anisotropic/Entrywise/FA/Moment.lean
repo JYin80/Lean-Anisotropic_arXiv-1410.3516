@@ -1,5 +1,9 @@
-import Anisotropic.Entrywise.FA.Vanish
-import Anisotropic.Entrywise.SelfCons
+module
+
+public import Anisotropic.Entrywise.FA.Vanish
+public import Anisotropic.Entrywise.SelfCons
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

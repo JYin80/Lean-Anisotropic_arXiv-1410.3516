@@ -1,7 +1,11 @@
-import Anisotropic.Entrywise.Defs
-import Anisotropic.LinAlg.ResolventIdDiag
-import Anisotropic.LinAlg.ResolventId
-import Anisotropic.Density.Stability.Domains
+module
+
+public import Anisotropic.Entrywise.Defs
+public import Anisotropic.LinAlg.ResolventIdDiag
+public import Anisotropic.LinAlg.ResolventId
+public import Anisotropic.Density.Stability.Domains
+
+@[expose] public section
 
 /-! # Control parameters and the identities of Section 5 for `Σ = diag(σ)`
 

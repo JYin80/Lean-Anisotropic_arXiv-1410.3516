@@ -1,4 +1,9 @@
-import Anisotropic.Framework.Model
+module
+
+public import Anisotropic.MainDefs
+public import Anisotropic.Framework.Model
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix
 open scoped ProbabilityTheory ENNReal
@@ -12,33 +17,6 @@ namespace Anisotropic
 section Dom
 
 variable {Ω : Type*} [MeasureSpace Ω]
-
-/-- Definition 3.4 (i) at fixed `N`, `ε`, `D`: `P(ξ > N^ε ζ) ≤ N^{-D}`. -/
-def DomAt (N : ℕ) (ε D : ℝ) (ξ ζ : Ω → ℝ) : Prop :=
-  ℙ {ω | (N : ℝ) ^ ε * ζ ω < ξ ω} ≤ ENNReal.ofReal ((N : ℝ) ^ (-D))
-
-/-- Definition 3.4 (ii) at fixed `N`: `ξ = O_≺(ζ)` for a complex `ξ` means `|ξ| ≺ ζ`. -/
-def ODomAt (N : ℕ) (ε D : ℝ) (ξ : Ω → ℂ) (ζ : Ω → ℝ) : Prop :=
-  DomAt N ε D (fun ω => ‖ξ ω‖) ζ
-
-/-- The bilinear form `⟨v, A w⟩ = ∑_{s,t} v_s A_{st} w_t` for real test vectors. -/
-def testBilin {ι : Type*} [Fintype ι] (v : ι → ℝ) (A : Matrix ι ι ℂ) (w : ι → ℝ) : ℂ :=
-  (fun s => (v s : ℂ)) ⬝ᵥ (A *ᵥ fun t => (w t : ℂ))
-
-/-- The Euclidean norm `|v|` of a real test vector. -/
-def testNorm {ι : Type*} [Fintype ι] (v : ι → ℝ) : ℝ :=
-  Real.sqrt (∑ s, v s ^ 2)
-
-/-- Definition 3.4 (iii) at fixed `N`: `A = O_≺(ζ)` in the weak operator sense, i.e.
-`|⟨v, A w⟩| ≺ ζ |v| |w|` for all deterministic `v`, `w`. -/
-def ODomMatAt {ι : Type*} [Fintype ι] (N : ℕ) (ε D : ℝ) (A : Ω → Matrix ι ι ℂ)
-    (ζ : Ω → ℝ) : Prop :=
-  ∀ v w : ι → ℝ,
-    DomAt N ε D (fun ω => ‖testBilin v (A ω) w‖) (fun ω => ζ ω * testNorm v * testNorm w)
-
-/-- Definition 4.7 at fixed `N`, `D`: `P(Ξᶜ) ≤ N^{-D}`. -/
-def HighProbAt (N : ℕ) (D : ℝ) (A : Set Ω) : Prop :=
-  ℙ Aᶜ ≤ ENNReal.ofReal ((N : ℝ) ^ (-D))
 
 end Dom
 

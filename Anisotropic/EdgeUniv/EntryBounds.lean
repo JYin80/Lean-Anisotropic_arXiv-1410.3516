@@ -1,8 +1,12 @@
-import Anisotropic.Density.Stability.EdgeSqRoot
-import Anisotropic.Density.Stability.EdgeTools
-import Anisotropic.EdgeUniv.Derivative
-import Anisotropic.Endpoints.Main
-import Anisotropic.Framework.Domination
+module
+
+public import Anisotropic.Density.Stability.EdgeSqRoot
+public import Anisotropic.Density.Stability.EdgeTools
+public import Anisotropic.EdgeUniv.Derivative
+public import Anisotropic.Endpoints.Main
+public import Anisotropic.Framework.Domination
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

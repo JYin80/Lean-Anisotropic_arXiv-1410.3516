@@ -1,5 +1,9 @@
-import Anisotropic.Entrywise.Defs
-import Anisotropic.LinAlg.Minor
+module
+
+public import Anisotropic.Entrywise.Defs
+public import Anisotropic.LinAlg.Minor
+
+@[expose] public section
 
 /-!
 # Independence and measurability of the minors `G^{(T)}`

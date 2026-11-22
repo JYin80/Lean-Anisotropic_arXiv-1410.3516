@@ -1,4 +1,8 @@
-import Anisotropic.Entrywise.LambdaOBound
+module
+
+public import Anisotropic.Entrywise.LambdaOBound
+
+@[expose] public section
 
 /-! # (Gii_2), (Gmumu_2), (Gmumu-m) and Lemma 5.3 for `Σ = diag(σ)`
 

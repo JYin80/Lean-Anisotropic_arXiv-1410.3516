@@ -1,4 +1,8 @@
-import Anisotropic.Density.Stability.Domains
+module
+
+public import Anisotropic.Density.Stability.Domains
+
+@[expose] public section
 
 open MeasureTheory Polynomial Filter Topology
 open scoped ENNReal

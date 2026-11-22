@@ -1,25 +1,29 @@
-import Anisotropic.Averaged.Defs
-import Anisotropic.Averaged.Main
-import Anisotropic.Density.Count
-import Anisotropic.Density.Critical
-import Anisotropic.Density.GenProp
-import Anisotropic.Density.SelfConsistent
-import Anisotropic.Density.Stability.Bulk
-import Anisotropic.Density.Stability.Domains
-import Anisotropic.Density.Stability.EdgeSqRoot
-import Anisotropic.Density.Stability.EdgeStab
-import Anisotropic.Density.Stability.EdgeTools
-import Anisotropic.Density.Stability.Outside
-import Anisotropic.Density.Stability.Quadratic
-import Anisotropic.Endpoints.Regions
-import Anisotropic.Endpoints.Resolvents
-import Anisotropic.Entrywise.Defs
-import Anisotropic.Entrywise.DiagModel
-import Anisotropic.Framework.Domination
-import Anisotropic.Framework.Model
-import Anisotropic.Gaussian.Ensemble
-import Anisotropic.Gaussian.Spectral
-import Anisotropic.Probability.NormBound.GaussianLower
+module
+
+public import Anisotropic.Averaged.Defs
+public import Anisotropic.Averaged.Main
+public import Anisotropic.Density.Count
+public import Anisotropic.Density.Critical
+public import Anisotropic.Density.GenProp
+public import Anisotropic.Density.SelfConsistent
+public import Anisotropic.Density.Stability.Bulk
+public import Anisotropic.Density.Stability.Domains
+public import Anisotropic.Density.Stability.EdgeSqRoot
+public import Anisotropic.Density.Stability.EdgeStab
+public import Anisotropic.Density.Stability.EdgeTools
+public import Anisotropic.Density.Stability.Outside
+public import Anisotropic.Density.Stability.Quadratic
+public import Anisotropic.Endpoints.Regions
+public import Anisotropic.Endpoints.Resolvents
+public import Anisotropic.Entrywise.Defs
+public import Anisotropic.Entrywise.DiagModel
+public import Anisotropic.Framework.Domination
+public import Anisotropic.Framework.Model
+public import Anisotropic.Gaussian.Ensemble
+public import Anisotropic.Gaussian.Spectral
+public import Anisotropic.Probability.NormBound.GaussianLower
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

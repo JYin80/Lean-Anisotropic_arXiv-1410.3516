@@ -1,5 +1,9 @@
-import Anisotropic.Entrywise.FA.Moment
-import Anisotropic.Framework.DominationMoment
+module
+
+public import Anisotropic.Entrywise.FA.Moment
+public import Anisotropic.Framework.DominationMoment
+
+@[expose] public section
 
 /-! # Lemma 5.6 (fluctuation averaging) for `Σ = diag(σ)`
 

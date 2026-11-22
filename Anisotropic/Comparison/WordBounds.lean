@@ -1,6 +1,10 @@
-import Anisotropic.Comparison.RoughBound
-import Anisotropic.Comparison.Words
-import Anisotropic.LinAlg.Ward
+module
+
+public import Anisotropic.Comparison.RoughBound
+public import Anisotropic.Comparison.Words
+public import Anisotropic.LinAlg.Ward
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

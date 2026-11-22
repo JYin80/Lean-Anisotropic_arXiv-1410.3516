@@ -1,5 +1,9 @@
-import Anisotropic.Density.Stability.EdgeSqRoot
-import Anisotropic.Density.Stability.Defs
+module
+
+public import Anisotropic.Density.Stability.EdgeSqRoot
+public import Anisotropic.Density.Stability.Defs
+
+@[expose] public section
 
 /-!
 # Lemma A.5: stability of (def_m) on `𝐃^e_k`

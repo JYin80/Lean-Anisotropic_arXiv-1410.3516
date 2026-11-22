@@ -1,12 +1,17 @@
-import Anisotropic.Density.GenProp
-import Anisotropic.Density.SelfConsistent
-import Anisotropic.Endpoints.Resolvents
-import Anisotropic.Entrywise.Defs
-import Anisotropic.Entrywise.DiagModel
-import Anisotropic.Framework.Domination
-import Anisotropic.Framework.Model
-import Anisotropic.LinAlg.Basic
-import Anisotropic.LinAlg.Blocks
+module
+
+public import Anisotropic.MainDefs
+public import Anisotropic.Density.GenProp
+public import Anisotropic.Density.SelfConsistent
+public import Anisotropic.Endpoints.Resolvents
+public import Anisotropic.Entrywise.Defs
+public import Anisotropic.Entrywise.DiagModel
+public import Anisotropic.Framework.Domination
+public import Anisotropic.Framework.Model
+public import Anisotropic.LinAlg.Basic
+public import Anisotropic.LinAlg.Blocks
+
+@[expose] public section
 
 /-!
 # Assumption 2.1 for a general `T`, the block matrix `G` of (def_block_G)
@@ -34,19 +39,6 @@ variable {M N : ℕ}
 section ModelT
 
 variable {Ω : Type*} [MeasureSpace Ω]
-
-/-- Assumption 2.1 for a general deterministic `M × K` matrix `T` (`K = M̂`) and a random
-`K × N` matrix `X`: (MsimN) for `M` and for `K`, the entry conditions on `X`, and
-(bound_Sigma), (Sigma_gap) for the eigenvalues of `Σ = T Tᵀ` (no `Σ > 0`). -/
-structure IsModelT (τ : ℝ) (C : ℕ → ℝ) (M K N : ℕ) (T : Matrix (Fin M) (Fin K) ℝ)
-    (X : Ω → Matrix (Fin K) (Fin N) ℝ) : Prop where
-  ratio_ge : τ ≤ (M : ℝ) / N
-  ratio_le : (M : ℝ) / N ≤ τ⁻¹
-  ratioK_ge : τ ≤ (K : ℝ) / N
-  ratioK_le : (K : ℝ) / N ≤ τ⁻¹
-  entries : EntryAssumption C X
-  eig_le : ∀ i, specOf (T * Tᵀ) i ≤ τ⁻¹
-  gap : ({i | specOf (T * Tᵀ) i ∈ Set.Icc 0 τ}.ncard : ℝ) ≤ (1 - τ) * M
 
 /-- (T_diag) is the case `K = M`, `T = Σ^{1/2}`, `Σ > 0`. -/
 theorem isModelT_sqrt_iff {τ : ℝ} {C : ℕ → ℝ} {Sig : Matrix (Fin M) (Fin M) ℝ}
@@ -123,38 +115,9 @@ theorem IsModelT.mono {τ τ₂ : ℝ} {C : ℕ → ℝ} {K : ℕ}
 
 end ModelT
 
-/-- (def_block_G) with the off-diagonal blocks `Σ^{1/2} T X R_N` and `R_N Xᵀ Tᵀ Σ^{1/2}`,
-`Σ = T Tᵀ` (§11.1). -/
-def blockG {K : ℕ} (T : Matrix (Fin M) (Fin K) ℝ) (X : Matrix (Fin K) (Fin N) ℝ) (z : ℂ) :
-    Matrix (Fin M ⊕ Fin N) (Fin M ⊕ Fin N) ℂ :=
-  fromBlocks
-    (z • (cplx (sigPow (T * Tᵀ) (1 / 2)) * RM T X z * cplx (sigPow (T * Tᵀ) (1 / 2))))
-    (cplx (sigPow (T * Tᵀ) (1 / 2) * T * X) * RN T X z)
-    (RN T X z * cplx ((sigPow (T * Tᵀ) (1 / 2) * T * X)ᵀ)) (RN T X z)
-
-/-- (def_m_N) for a general `T`: `m_N = N⁻¹ tr R_N`. -/
-def mNT {K : ℕ} (T : Matrix (Fin M) (Fin K) ℝ) (X : Matrix (Fin K) (Fin N) ℝ) (z : ℂ) : ℂ :=
-  (N : ℂ)⁻¹ * trace (RN T X z)
-
 section LawsT
 
 variable {Ω : Type*} [MeasureSpace Ω]
-
-/-- (edge_G_result) for `G` of (def_block_G), in the weighted form: for all deterministic `v`,
-`w`, `|⟨v, (G − Π) w⟩| ≺ Ψ |Σ̲ v| |Σ̲ w|`, with `Σ = T Tᵀ`, at fixed `N, ε, D` on `S`. -/
-def AnisotropicLawTAt (N : ℕ) (ε D : ℝ) {K : ℕ} (T : Matrix (Fin M) (Fin K) ℝ)
-    (X : Ω → Matrix (Fin K) (Fin N) ℝ) (S : Set ℂ) : Prop :=
-  ∀ z ∈ S, ∀ v w : Fin M ⊕ Fin N → ℝ,
-    DomAt N ε D
-      (fun ω => ‖testBilin v (blockG T (X ω) z - piMat (T * Tᵀ) (mFun N (specOf (T * Tᵀ)) z)) w‖)
-      (fun _ => Psi N (specOf (T * Tᵀ)) z * testNorm (SigU (T * Tᵀ) *ᵥ v) *
-        testNorm (SigU (T * Tᵀ) *ᵥ w))
-
-/-- (edge_G_avg_result) for a general `T` at fixed `N, ε, D` on `S`. -/
-def AveragedLawTAt (N : ℕ) (ε D : ℝ) {K : ℕ} (T : Matrix (Fin M) (Fin K) ℝ)
-    (X : Ω → Matrix (Fin K) (Fin N) ℝ) (S : Set ℂ) : Prop :=
-  ∀ z ∈ S, ODomAt N ε D (fun ω => mNT T (X ω) z - mFun N (specOf (T * Tᵀ)) z)
-    (fun _ => 1 / (N * z.im))
 
 end LawsT
 

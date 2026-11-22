@@ -1,16 +1,21 @@
-import Anisotropic.Density.Count
-import Anisotropic.Density.Critical
-import Anisotropic.Density.Ordering
-import Anisotropic.Entrywise.DiagModel
-import Anisotropic.Framework.Domination
-import Anisotropic.GeneralT.Edges
-import Anisotropic.GeneralT.Limit
-import Anisotropic.GeneralT.Masses
-import Anisotropic.GeneralT.Model
-import Anisotropic.Rigidity.Defs
-import Anisotropic.Rigidity.Local
-import Anisotropic.Rigidity.Main
-import Anisotropic.Rigidity.MinMax
+module
+
+public import Anisotropic.MainDefs
+public import Anisotropic.Density.Count
+public import Anisotropic.Density.Critical
+public import Anisotropic.Density.Ordering
+public import Anisotropic.Entrywise.DiagModel
+public import Anisotropic.Framework.Domination
+public import Anisotropic.GeneralT.Edges
+public import Anisotropic.GeneralT.Limit
+public import Anisotropic.GeneralT.Masses
+public import Anisotropic.GeneralT.Model
+public import Anisotropic.Rigidity.Defs
+public import Anisotropic.Rigidity.Local
+public import Anisotropic.Rigidity.Main
+public import Anisotropic.Rigidity.MinMax
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator
@@ -23,12 +28,6 @@ namespace Anisotropic
 variable {M N : ℕ}
 
 /-! # Theorems 3.12, 3.14 (iii) and 3.15 (iii) for a general `T` -/
-
-/-- `λ_{k,i}` for a general `T`: the eigenvalues of `Xᵀ Tᵀ T X` (whose nonzero eigenvalues are
-those of `Q = T X Xᵀ Tᵀ`), relabelled with the band counts of `Σ = T Tᵀ`. -/
-def lamBandT {K : ℕ} (T : Matrix (Fin M) (Fin K) ℝ) (Xm : Matrix (Fin K) (Fin N) ℝ)
-    (k i : ℕ) : ℝ :=
-  sortedEig (QN (Tᵀ * T) Xm) (cumCount N (specOf (T * Tᵀ)) (k - 1) + i)
 
 /-! ## Auxiliary facts -/
 

@@ -1,4 +1,8 @@
-import Anisotropic.LinAlg.Spectral
+module
+
+public import Anisotropic.LinAlg.Spectral
+
+@[expose] public section
 
 open Matrix ComplexOrder
 set_option linter.unusedSectionVars false

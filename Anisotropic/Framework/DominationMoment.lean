@@ -1,4 +1,8 @@
-import Anisotropic.Framework.Domination
+module
+
+public import Anisotropic.Framework.Domination
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix
 open scoped ProbabilityTheory ENNReal

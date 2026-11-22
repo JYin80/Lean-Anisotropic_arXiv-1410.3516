@@ -1,13 +1,17 @@
-import Anisotropic.Comparison.Ladder
-import Anisotropic.Comparison.Props
-import Anisotropic.Comparison.Words
-import Anisotropic.Entrywise.DiagModel
-import Anisotropic.Framework.Domination
-import Anisotropic.Wigner.Model
-import Anisotropic.Wigner.Props
-import Anisotropic.Wigner.RoughBound
-import Anisotropic.Wigner.SelfConsistentII
-import Anisotropic.Wigner.Words
+module
+
+public import Anisotropic.Comparison.Ladder
+public import Anisotropic.Comparison.Props
+public import Anisotropic.Comparison.Words
+public import Anisotropic.Entrywise.DiagModel
+public import Anisotropic.Framework.Domination
+public import Anisotropic.Wigner.Model
+public import Anisotropic.Wigner.Props
+public import Anisotropic.Wigner.RoughBound
+public import Anisotropic.Wigner.SelfConsistentII
+public import Anisotropic.Wigner.Words
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

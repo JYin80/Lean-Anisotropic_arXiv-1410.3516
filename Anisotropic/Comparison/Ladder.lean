@@ -1,5 +1,9 @@
-import Anisotropic.Density.Stability.Domains
-import Anisotropic.Entrywise.Defs
+module
+
+public import Anisotropic.Density.Stability.Domains
+public import Anisotropic.Entrywise.Defs
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

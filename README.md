@@ -119,3 +119,16 @@ errors found in the paper, and where the Lean proof takes a different route.
 The code is released under the Apache License 2.0; see [`LICENSE`](LICENSE).
 
 Paper: Antti Knowles and Jun Yin. Lean formalization: Jun Yin.
+
+## Palomar
+
+The repository is laid out for the [Palomar registry](https://palomar-registry.org/) of Lean-verified mathematics.
+All source files use Lean's module system. [`Anisotropic/MainDefs.lean`](Anisotropic/MainDefs.lean) holds every
+definition used by the statements of Theorems 3.6, 3.7, 3.12, 3.18, Corollary 3.9, Proposition 11.1 and
+Theorems 12.2, 12.4, 12.5, and depends on Mathlib only; [`Challenge.lean`](Challenge.lean) is the statement to audit
+(it imports Mathlib only and repeats the definitions of `Anisotropic/MainDefs.lean`),
+[`Solution.lean`](Solution.lean) proves it from the library, [`comparator.json`](comparator.json) names the compared
+theorems and [`formalization.yaml`](formalization.yaml) holds the metadata. `lake build` also builds `Challenge.lean`
+(ten `sorry` warnings, by design) and `Solution.lean`. `python3 scripts/check-lean-sources.py` and
+`./scripts/verify-comparator.sh` (Linux, needs `bwrap`) run the checks locally; submissions go to
+<https://submit.palomar-registry.org/>.

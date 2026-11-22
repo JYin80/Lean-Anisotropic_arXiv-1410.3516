@@ -1,25 +1,29 @@
-import Anisotropic.Density.Count
-import Anisotropic.Density.Critical
-import Anisotropic.Density.SelfConsistent
-import Anisotropic.Density.Stability.Domains
-import Anisotropic.Density.Stability.EdgeTools
-import Anisotropic.Density.Varrho
-import Anisotropic.Endpoints.Main
-import Anisotropic.Endpoints.Regions
-import Anisotropic.Endpoints.Resolvents
-import Anisotropic.Entrywise.Defs
-import Anisotropic.Entrywise.DiagModel
-import Anisotropic.Framework.Domination
-import Anisotropic.Framework.Model
-import Anisotropic.GeneralT.Edges
-import Anisotropic.GeneralT.Main
-import Anisotropic.GeneralT.Model
-import Anisotropic.GeneralT.Rigidity
-import Anisotropic.Instances.MarchenkoPastur
-import Anisotropic.Instances.Models
-import Anisotropic.Rigidity.Defs
-import Anisotropic.Rigidity.Main
-import Anisotropic.Rigidity.Outside
+module
+
+public import Anisotropic.Density.Count
+public import Anisotropic.Density.Critical
+public import Anisotropic.Density.SelfConsistent
+public import Anisotropic.Density.Stability.Domains
+public import Anisotropic.Density.Stability.EdgeTools
+public import Anisotropic.Density.Varrho
+public import Anisotropic.Endpoints.Main
+public import Anisotropic.Endpoints.Regions
+public import Anisotropic.Endpoints.Resolvents
+public import Anisotropic.Entrywise.Defs
+public import Anisotropic.Entrywise.DiagModel
+public import Anisotropic.Framework.Domination
+public import Anisotropic.Framework.Model
+public import Anisotropic.GeneralT.Edges
+public import Anisotropic.GeneralT.Main
+public import Anisotropic.GeneralT.Model
+public import Anisotropic.GeneralT.Rigidity
+public import Anisotropic.Instances.MarchenkoPastur
+public import Anisotropic.Instances.Models
+public import Anisotropic.Rigidity.Defs
+public import Anisotropic.Rigidity.Main
+public import Anisotropic.Rigidity.Outside
+
+@[expose] public section
 
 /-! # The window `tauEdge` common to Theorem 3.14 (i)–(iii), and each main theorem instantiated at the model families -/
 

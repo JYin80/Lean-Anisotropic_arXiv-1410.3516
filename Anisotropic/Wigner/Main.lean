@@ -1,11 +1,15 @@
-import Anisotropic.Comparison.MainII
-import Anisotropic.Entrywise.DiagModel
-import Anisotropic.Framework.Domination
-import Anisotropic.Wigner.Comparison
-import Anisotropic.Wigner.Defs
-import Anisotropic.Wigner.GaussDiag
-import Anisotropic.Wigner.GaussRotate
-import Anisotropic.Wigner.Model
+module
+
+public import Anisotropic.Comparison.MainII
+public import Anisotropic.Entrywise.DiagModel
+public import Anisotropic.Framework.Domination
+public import Anisotropic.Wigner.Comparison
+public import Anisotropic.Wigner.Defs
+public import Anisotropic.Wigner.GaussDiag
+public import Anisotropic.Wigner.GaussRotate
+public import Anisotropic.Wigner.Model
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

@@ -1,8 +1,12 @@
-import Anisotropic.Density.Critical
-import Anisotropic.EdgeUniv.Defs
-import Anisotropic.Framework.Domination
-import Anisotropic.Rigidity.Defs
-import Anisotropic.Rigidity.MinMax
+module
+
+public import Anisotropic.Density.Critical
+public import Anisotropic.EdgeUniv.Defs
+public import Anisotropic.Framework.Domination
+public import Anisotropic.Rigidity.Defs
+public import Anisotropic.Rigidity.MinMax
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

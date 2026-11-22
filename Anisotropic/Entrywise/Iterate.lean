@@ -1,6 +1,10 @@
-import Anisotropic.Entrywise.Control
-import Anisotropic.Density.Stability.Defs
-import Anisotropic.Density.Varrho
+module
+
+public import Anisotropic.Entrywise.Control
+public import Anisotropic.Density.Stability.Defs
+public import Anisotropic.Density.Varrho
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

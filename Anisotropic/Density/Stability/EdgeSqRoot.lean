@@ -1,4 +1,8 @@
-import Anisotropic.Density.Stability.EdgeTaylor
+module
+
+public import Anisotropic.Density.Stability.EdgeTaylor
+
+@[expose] public section
 
 /-!
 # (m_sq_root), (mz_reg) and (1+xm) on `𝐃^e_k` (Lemma A.4)

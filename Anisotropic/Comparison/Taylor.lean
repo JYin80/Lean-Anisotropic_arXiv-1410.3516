@@ -1,6 +1,10 @@
-import Anisotropic.Comparison.RoughBoundUpd
-import Anisotropic.Comparison.Words
-import Anisotropic.Framework.DominationMoment
+module
+
+public import Anisotropic.Comparison.RoughBoundUpd
+public import Anisotropic.Comparison.Words
+public import Anisotropic.Framework.DominationMoment
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

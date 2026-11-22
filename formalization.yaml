@@ -1,0 +1,156 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+# formalization.yaml v0.4, for Palomar (https://palomar-registry.org/).
+version: "v0.4"
+
+project:
+  name: "Anisotropic local laws for random matrices"
+  description: >-
+    A Lean 4 / Mathlib proof of the main results of Knowles and Yin, "Anisotropic local laws for
+    random matrices" (arXiv:1410.3516). The sample covariance matrix is Q = T X X* T* with X an
+    M x N matrix of independent centred real entries of variance 1/N (Assumption 2.1). Proved, for
+    real matrices and real deterministic vectors, at fixed N >= N_0 with explicit constants: the
+    anisotropic and averaged local laws (Theorem 3.6), the law outside the spectrum (Theorem 3.7),
+    Corollary 3.9, the rigidity of the eigenvalues (Theorem 3.12), edge universality (Theorem
+    3.18), the local laws for general T (Proposition 11.1), and for deformed Wigner matrices the
+    local laws (Theorem 12.2), the rigidity of the extreme eigenvalues (Theorem 12.4) and edge
+    universality (Theorem 12.5). No result of another work is assumed for these statements; every
+    result that the paper uses for them is proved in the library from Mathlib.
+  authors:
+    - "Jun Yin"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Jun Yin"
+
+classification:
+  arxiv: ["math.PR", "math-ph"]
+  msc2020: ["60B20", "15B52", "82B44"]
+
+sources:
+  - title: "Anisotropic local laws for random matrices"
+    authors:
+      - "Antti Knowles"
+      - "Jun Yin"
+    id: "arXiv:1410.3516"
+    type: "paper"
+    location: "https://arxiv.org/abs/1410.3516"
+    relationship: "formalizes"
+    note: >-
+      The Lean code follows paper/KnowlesYin_Anisotropic_Lean_version.pdf in this repository:
+      arXiv:1410.3516v4 with the corrections found during the formalization; theorem and equation
+      numbers are unchanged, and docs/PAPER-VS-LEAN.md refers to this version. Jun Yin, a
+      co-author of the paper, is the author of the formalization.
+    license: "unknown"
+    author_endorsement: "not-contacted"
+
+related_formalizations: []
+
+status:
+  scope: >-
+    In this entry (Challenge.lean): Theorems 3.6, 3.7, 3.12 and 3.18, Corollary 3.9,
+    Proposition 11.1, and Theorems 12.2, 12.4 and 12.5; Corollary 3.9, Theorems 3.12 and 3.18 in
+    the form for general T. Theorems 12.2, 12.4 and 12.5 are transfer statements, as in the paper:
+    the hypotheses on the Gaussian (GOE) side stay hypotheses. Also proved in the library, not in
+    this entry: Theorems 3.14-3.16, the forms under (T_diag), Theorems 11.2-11.4, and Corollary
+    3.19, which takes the Tracy-Widom theory of the Gaussian case as explicit hypotheses.
+    docs/PAPER-VS-LEAN.md, Sections 1 and 2, lists every result.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: []
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["claude-opus-5-5", "claude-sonnet-5-5", "claude-fable-5-1", "claude-fable-5-2"]
+      framework: "Claude Code"
+      tool_setup: >-
+        AI-assisted: a team of Claude Code agents (a dispatcher, workers on ticket worktrees and
+        reviewing agents) wrote the Lean code and the comparison documents from the paper's
+        source, under the direction of Jun Yin, who fixed the endpoint statements. The port to the
+        Lean module system and the Challenge/Solution files for Palomar were also written with
+        Claude.
+      cost:
+        wall_time: "about 57 hours of active work between 2026-10-22 and 2026-10-25 (248 commits in the work repository; the run was paused for long stretches in between)"
+        spend_usd: "not tracked"
+        hardware: "local machine"
+      prompting_notes: "n/a"
+  spend_usd: "not tracked"
+  notes: >-
+    The mathematical source is a paper by Antti Knowles and Jun Yin. The Lean proofs were produced
+    by AI agents; the statements of the main theorems and of the definitions they use were fixed
+    and checked by Jun Yin against the paper.
+
+fidelity:
+  divergences: >-
+    (1) Every statement is at fixed N >= N_0 with explicit constants, uniformly over the models
+    that satisfy the hypotheses; stochastic domination (Definition 3.4) is a derived notion.
+    (2) Real matrices and real deterministic vectors only. (3) The edge regularity hypotheses of
+    Theorems 3.6, 3.7, 3.12, Corollary 3.9 and Proposition 11.1 are imposed on the edges with
+    a_k >= tau/2, at parameter tau/2. (4) Theorem 3.18 is for bounded uniformly continuous test
+    functions. (5) Theorems 12.2, 12.4 and 12.5 are transfer statements whose Gaussian-side
+    hypotheses stay hypotheses. Details, and the errors found in the paper:
+    docs/PAPER-VS-LEAN.md, Sections 4 and 5.
+
+review:
+  status: "agent-reviewed"
+  reviewers: []
+  notes: >-
+    The Lean proof of each ticket was audited by a separate auditing agent, and a supervising
+    agent checked the final statements. Jun Yin checked the statements of the main theorems and
+    of the definitions they use against the paper. No independent human review has been
+    performed.
+
+alignment:
+  namespace: "Anisotropic"
+  statements:
+    - source: "Theorem 3.6"
+      lean: "Anisotropic.thm_3_6"
+      module: "Challenge"
+      status: "proved"
+      note: "Proved in Solution.lean by Anisotropic.LL_G."
+    - source: "Theorem 3.7"
+      lean: "Anisotropic.thm_3_7"
+      module: "Challenge"
+      status: "proved"
+      note: "Proved by Anisotropic.G_outside."
+    - source: "Corollary 3.9"
+      lean: "Anisotropic.cor_3_9"
+      module: "Challenge"
+      status: "proved"
+      note: "Proved by Anisotropic.cor_GM_GN_gen (general T)."
+    - source: "Theorem 3.12"
+      lean: "Anisotropic.thm_3_12"
+      module: "Challenge"
+      status: "proved"
+      note: "Proved by Anisotropic.rigidity_gen (general T)."
+    - source: "Theorem 3.18"
+      lean: "Anisotropic.thm_3_18"
+      module: "Challenge"
+      status: "proved"
+      note: "Proved by Anisotropic.edge_univT (general T)."
+    - source: "Proposition 11.1"
+      lean: "Anisotropic.prop_11_1"
+      module: "Challenge"
+      status: "proved"
+      note: "Proved by Anisotropic.LL_G_gen."
+    - source: "Theorem 12.2 (anisotropic law)"
+      lean: "Anisotropic.thm_12_2_aniso"
+      module: "Challenge"
+      status: "proved"
+      note: "Proved by Anisotropic.general_wig_aniso."
+    - source: "Theorem 12.2 (averaged law)"
+      lean: "Anisotropic.thm_12_2_avg"
+      module: "Challenge"
+      status: "proved"
+      note: "Proved by Anisotropic.general_wig_avg."
+    - source: "Theorem 12.4"
+      lean: "Anisotropic.thm_12_4"
+      module: "Challenge"
+      status: "proved"
+      note: "Proved by Anisotropic.wigner_rig."
+    - source: "Theorem 12.5"
+      lean: "Anisotropic.thm_12_5"
+      module: "Challenge"
+      status: "proved"
+      note: "Proved by Anisotropic.wigner_edge_univ."
+
+acknowledgements: "Mathlib and the Lean community; Lean 4 (Lean FRO); Claude Code (Anthropic)."

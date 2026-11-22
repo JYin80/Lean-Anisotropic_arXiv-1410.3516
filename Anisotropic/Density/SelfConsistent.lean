@@ -1,4 +1,9 @@
-import Anisotropic.Density.Poly
+module
+
+public import Anisotropic.MainDefs
+public import Anisotropic.Density.Poly
+
+@[expose] public section
 
 /-!
 # The self-consistent equation and its solution `m`
@@ -411,10 +416,6 @@ private lemma sc_norm_fC_le (N : ℕ) (σ : Fin M → ℝ) (hσ : ∀ i, 0 ≤ �
   linarith
 
 /-! ## Existence and uniqueness of `m` (Lemma 2.2, Definition 2.3, (def_m)) -/
-
-/-- `m(z)`: the unique `w ∈ ℂ₊` with `f(w) = z`, (def_m); junk value `0` when there is none. -/
-def mFun (N : ℕ) (σ : Fin M → ℝ) (z : ℂ) : ℂ :=
-  if h : ∃ w : ℂ, 0 < w.im ∧ fC N σ w = z then h.choose else 0
 
 theorem mFun_spec (N : ℕ) (σ : Fin M → ℝ) (hσ : ∀ i, 0 ≤ σ i) {z : ℂ} (hz : 0 < z.im) :
     0 < (mFun N σ z).im ∧ fC N σ (mFun N σ z) = z := by

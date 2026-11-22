@@ -1,10 +1,14 @@
-import Anisotropic.EdgeUniv.GOEEdge
-import Anisotropic.EdgeUniv.Main
-import Anisotropic.Entrywise.DiagModel
-import Anisotropic.GeneralT.Model
-import Anisotropic.Instances.MarchenkoPastur
-import Anisotropic.Instances.MarchenkoPasturTwo
-import Anisotropic.Instances.Models
+module
+
+public import Anisotropic.EdgeUniv.GOEEdge
+public import Anisotropic.EdgeUniv.Main
+public import Anisotropic.Entrywise.DiagModel
+public import Anisotropic.GeneralT.Model
+public import Anisotropic.Instances.MarchenkoPastur
+public import Anisotropic.Instances.MarchenkoPasturTwo
+public import Anisotropic.Instances.Models
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

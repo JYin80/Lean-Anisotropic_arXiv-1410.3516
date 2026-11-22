@@ -1,4 +1,9 @@
-import Anisotropic.Density.SelfConsistent
+module
+
+public import Anisotropic.MainDefs
+public import Anisotropic.Density.SelfConsistent
+
+@[expose] public section
 
 /-!
 # Boundary values of `m` on `ℝ ∖ {0}`
@@ -29,10 +34,6 @@ namespace Anisotropic
 variable {M : ℕ}
 
 /-! ## Boundary values of `m` -/
-
-/-- `m` on `ℂ₊`, and its limit from `ℂ₊` elsewhere. -/
-def mExt (N : ℕ) (σ : Fin M → ℝ) (z : ℂ) : ℂ :=
-  if 0 < z.im then mFun N σ z else limUnder (𝓝[upperHalf] z) (mFun N σ)
 
 private lemma bd_convex_upperHalf : Convex ℝ upperHalf :=
   convex_halfSpace_im_gt 0

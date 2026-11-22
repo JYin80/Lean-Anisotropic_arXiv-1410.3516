@@ -1,4 +1,9 @@
-import Mathlib
+module
+
+public import Anisotropic.MainDefs
+public import Mathlib
+
+@[expose] public section
 
 /-!
 # Framework: the model and sign spaces
@@ -22,46 +27,7 @@ section Model
 
 variable {Ω : Type*} [MeasureSpace Ω]
 
-/-- The entry conditions of Assumption 2.1 for a random `K × N` matrix `X`:
-measurability, independence of all entries, (cond on entries of X) and
-(moments of X-1) for all `p`, the latter with the integrability of `|√N X_{iμ}|^p`. -/
-structure EntryAssumption (C : ℕ → ℝ) {K N : ℕ} (X : Ω → Matrix (Fin K) (Fin N) ℝ) :
-    Prop where
-  measurable : ∀ i μ, Measurable fun ω => X ω i μ
-  indep : iIndepFun (fun (p : Fin K × Fin N) (ω : Ω) => X ω p.1 p.2) ℙ
-  mean : ∀ i μ, ∫ ω, X ω i μ = 0
-  var : ∀ i μ, ∫ ω, X ω i μ ^ 2 = 1 / (N : ℝ)
-  integrable_moment : ∀ (p : ℕ) i μ, Integrable fun ω => |Real.sqrt N * X ω i μ| ^ p
-  moment : ∀ (p : ℕ) i μ, ∫ ω, |Real.sqrt N * X ω i μ| ^ p ≤ C p
-
-/-- The conditions of Assumption 2.1 on `Σ` under (T_diag): `Σ > 0`, (bound_Sigma)
-`σ₁ ≤ τ⁻¹` for every eigenvalue, and (Sigma_gap) `π([0,τ]) ≤ 1 - τ`, where
-`π = M⁻¹ ∑ᵢ δ_{σᵢ}` (def_pi), so that `M π([0,τ])` is the number of eigenvalues
-in `[0,τ]` counted with multiplicity. -/
-structure SigmaAssumption (τ : ℝ) {M : ℕ} (Sig : Matrix (Fin M) (Fin M) ℝ) : Prop where
-  posDef : Sig.PosDef
-  eigenvalues_le : ∀ i, posDef.isHermitian.eigenvalues i ≤ τ⁻¹
-  gap : ({i | posDef.isHermitian.eigenvalues i ∈ Set.Icc 0 τ}.ncard : ℝ) ≤ (1 - τ) * M
-
-/-- Assumption 2.1 under (T_diag): (phi_bounded) `τ ≤ M/N ≤ τ⁻¹`, the entry conditions
-on `X`, and the conditions on `Σ`. -/
-structure IsModel (τ : ℝ) (C : ℕ → ℝ) (M N : ℕ) (Sig : Matrix (Fin M) (Fin M) ℝ)
-    (X : Ω → Matrix (Fin M) (Fin N) ℝ) : Prop where
-  ratio_ge : τ ≤ (M : ℝ) / N
-  ratio_le : (M : ℝ) / N ≤ τ⁻¹
-  entries : EntryAssumption C X
-  sigma : SigmaAssumption τ Sig
-
 end Model
-
-/-- The extension `Σ̲ = diag(Σ, 1)` of (def_ul_Sigma), as a complex `𝓘 × 𝓘` matrix. -/
-def ulSigma {M : ℕ} (N : ℕ) (Sig : Matrix (Fin M) (Fin M) ℝ) :
-    Matrix (Fin M ⊕ Fin N) (Fin M ⊕ Fin N) ℂ :=
-  Matrix.fromBlocks (Sig.map (algebraMap ℝ ℂ)) 0 0 1
-
-/-- The spectral domain `𝐃(τ,N)` of (def_D). -/
-def specDomain (τ : ℝ) (N : ℕ) : Set ℂ :=
-  {z | 0 < z.im ∧ τ ≤ ‖z‖ ∧ |z.re| ≤ τ⁻¹ ∧ (N : ℝ) ^ (-1 + τ) ≤ z.im ∧ z.im ≤ τ⁻¹}
 
 /-! ## Finite sign spaces and the eigenvalues of the identity -/
 

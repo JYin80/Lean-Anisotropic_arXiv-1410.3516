@@ -1,4 +1,9 @@
-import Mathlib
+module
+
+public import Anisotropic.MainDefs
+public import Mathlib
+
+@[expose] public section
 
 open Matrix ComplexOrder
 set_option linter.unusedSectionVars false
@@ -6,14 +11,6 @@ namespace Anisotropic
 variable {m n : Type*} [Fintype m] [Fintype n] [DecidableEq m] [DecidableEq n]
 open scoped Matrix.Norms.L2Operator
 open Sum
-
-/-- Complexification of a real matrix. -/
-noncomputable abbrev cplx {p q : Type*} (A : Matrix p q ℝ) : Matrix p q ℂ := A.map (algebraMap ℝ ℂ)
-
-/-- `fromBlocks (-A) X Xᵀ (-z)`; `H(z)` of Definition 4.2 is the case `A = Σ⁻¹`. -/
-noncomputable def linH (A : Matrix m m ℝ) (X : Matrix m n ℝ) (z : ℂ) :
-    Matrix (m ⊕ n) (m ⊕ n) ℂ :=
-  fromBlocks (-cplx A) (cplx X) (cplx Xᵀ) (-(z • (1 : Matrix n n ℂ)))
 
 /-- `linH A X z` is invertible for `A > 0`, `Im z > 0`. -/
 theorem linH_isUnit {A : Matrix m m ℝ} (hA : A.PosDef) (X : Matrix m n ℝ) {z : ℂ}
@@ -73,14 +70,6 @@ noncomputable abbrev cvec {p : Type*} (v : p → ℝ) : p → ℂ := fun s => (v
 noncomputable def H (Sig : Matrix m m ℝ) (X : Matrix m n ℝ) (z : ℂ) :
     Matrix (m ⊕ n) (m ⊕ n) ℂ := linH Sig⁻¹ X z
 
-/-- Inverse of `linH A X z` (precision form; minors are of this form). -/
-noncomputable def GA (A : Matrix m m ℝ) (X : Matrix m n ℝ) (z : ℂ) :
-    Matrix (m ⊕ n) (m ⊕ n) ℂ := (linH A X z)⁻¹
-
-/-- `G(z) = H(z)⁻¹`, Definition 4.2 and (def_G). -/
-noncomputable def G (Sig : Matrix m m ℝ) (X : Matrix m n ℝ) (z : ℂ) :
-    Matrix (m ⊕ n) (m ⊕ n) ℂ := GA Sig⁻¹ X z
-
 theorem G_def (Sig : Matrix m m ℝ) (X : Matrix m n ℝ) (z : ℂ) :
     G Sig X z = (H Sig X z)⁻¹ := rfl
 
@@ -135,9 +124,6 @@ theorem GM_isUnit {Sig : Matrix m m ℝ} (hSig : Sig.PosDef) (X : Matrix m n ℝ
   convert h using 1
   simp only [cplx, Matrix.map_mul, Matrix.mul_neg, Matrix.neg_mul, sub_neg_eq_add,
     Matrix.mul_smul, Matrix.mul_one, Matrix.smul_mul]
-
-
-def SigU (Sig : Matrix m m ℝ) : Matrix (m ⊕ n) (m ⊕ n) ℝ := fromBlocks Sig 0 0 1
 
 /-- The projection `0 ⊕ 1` onto the `𝓘_N` coordinates. -/
 noncomputable def PN : Matrix (m ⊕ n) (m ⊕ n) ℂ := fromBlocks 0 0 0 1

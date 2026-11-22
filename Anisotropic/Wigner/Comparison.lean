@@ -1,15 +1,19 @@
-import Anisotropic.Comparison.Gronwall
-import Anisotropic.Comparison.Interpolation
-import Anisotropic.Entrywise.DiagModel
-import Anisotropic.Framework.Domination
-import Anisotropic.Wigner.Defs
-import Anisotropic.Wigner.Diag
-import Anisotropic.Wigner.GOE
-import Anisotropic.Wigner.HighOrder
-import Anisotropic.Wigner.Model
-import Anisotropic.Wigner.Props
-import Anisotropic.Wigner.Taylor
-import Anisotropic.Wigner.Third
+module
+
+public import Anisotropic.Comparison.Gronwall
+public import Anisotropic.Comparison.Interpolation
+public import Anisotropic.Entrywise.DiagModel
+public import Anisotropic.Framework.Domination
+public import Anisotropic.Wigner.Defs
+public import Anisotropic.Wigner.Diag
+public import Anisotropic.Wigner.GOE
+public import Anisotropic.Wigner.HighOrder
+public import Anisotropic.Wigner.Model
+public import Anisotropic.Wigner.Props
+public import Anisotropic.Wigner.Taylor
+public import Anisotropic.Wigner.Third
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

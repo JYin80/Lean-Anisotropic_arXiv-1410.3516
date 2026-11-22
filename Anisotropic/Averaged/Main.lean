@@ -1,23 +1,27 @@
-import Anisotropic.Averaged.Chain
-import Anisotropic.Averaged.ClaimFour
-import Anisotropic.Averaged.Defs
-import Anisotropic.Averaged.HatAvg
-import Anisotropic.Comparison.Ensemble
-import Anisotropic.Comparison.Gronwall
-import Anisotropic.Comparison.Interpolation
-import Anisotropic.Comparison.Ladder
-import Anisotropic.Comparison.MainII
-import Anisotropic.Comparison.PrelimBounds
-import Anisotropic.Density.GenProp
-import Anisotropic.Density.Stability.Domains
-import Anisotropic.Entrywise.Defs
-import Anisotropic.Entrywise.DiagModel
-import Anisotropic.Framework.Domination
-import Anisotropic.Framework.Model
-import Anisotropic.Gaussian.Ensemble
-import Anisotropic.Gaussian.Lemma62
-import Anisotropic.Gaussian.Main
-import Anisotropic.Probability.NormBound.GaussianLower
+module
+
+public import Anisotropic.Averaged.Chain
+public import Anisotropic.Averaged.ClaimFour
+public import Anisotropic.Averaged.Defs
+public import Anisotropic.Averaged.HatAvg
+public import Anisotropic.Comparison.Ensemble
+public import Anisotropic.Comparison.Gronwall
+public import Anisotropic.Comparison.Interpolation
+public import Anisotropic.Comparison.Ladder
+public import Anisotropic.Comparison.MainII
+public import Anisotropic.Comparison.PrelimBounds
+public import Anisotropic.Density.GenProp
+public import Anisotropic.Density.Stability.Domains
+public import Anisotropic.Entrywise.Defs
+public import Anisotropic.Entrywise.DiagModel
+public import Anisotropic.Framework.Domination
+public import Anisotropic.Framework.Model
+public import Anisotropic.Gaussian.Ensemble
+public import Anisotropic.Gaussian.Lemma62
+public import Anisotropic.Gaussian.Main
+public import Anisotropic.Probability.NormBound.GaussianLower
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

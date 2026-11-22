@@ -1,9 +1,13 @@
-import Anisotropic.Density.Critical
-import Anisotropic.Density.GenProp
-import Anisotropic.Density.Varrho
-import Anisotropic.Rigidity.Deform
-import Anisotropic.Rigidity.Defs
-import Anisotropic.Rigidity.MinMax
+module
+
+public import Anisotropic.Density.Critical
+public import Anisotropic.Density.GenProp
+public import Anisotropic.Density.Varrho
+public import Anisotropic.Rigidity.Deform
+public import Anisotropic.Rigidity.Defs
+public import Anisotropic.Rigidity.MinMax
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

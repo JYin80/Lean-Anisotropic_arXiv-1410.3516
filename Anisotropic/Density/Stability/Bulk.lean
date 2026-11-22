@@ -1,6 +1,10 @@
-import Anisotropic.Density.Stability.Defs
-import Anisotropic.Density.Stability.Quadratic
-import Anisotropic.Density.Count
+module
+
+public import Anisotropic.Density.Stability.Defs
+public import Anisotropic.Density.Stability.Quadratic
+public import Anisotropic.Density.Count
+
+@[expose] public section
 
 /-!
 # Stability in a regular bulk component (Lemma A.6)

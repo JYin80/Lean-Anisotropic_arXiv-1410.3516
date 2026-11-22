@@ -1,11 +1,15 @@
-import Anisotropic.Averaged.Defs
-import Anisotropic.Comparison.Ladder
-import Anisotropic.Comparison.PrelimBounds
-import Anisotropic.Comparison.WordBounds
-import Anisotropic.Comparison.Words
-import Anisotropic.Entrywise.Defs
-import Anisotropic.Entrywise.DiagModel
-import Anisotropic.Framework.Model
+module
+
+public import Anisotropic.Averaged.Defs
+public import Anisotropic.Comparison.Ladder
+public import Anisotropic.Comparison.PrelimBounds
+public import Anisotropic.Comparison.WordBounds
+public import Anisotropic.Comparison.Words
+public import Anisotropic.Entrywise.Defs
+public import Anisotropic.Entrywise.DiagModel
+public import Anisotropic.Framework.Model
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

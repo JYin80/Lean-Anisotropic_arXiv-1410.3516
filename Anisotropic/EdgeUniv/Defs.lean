@@ -1,15 +1,20 @@
-import Anisotropic.Density.Basic
-import Anisotropic.Density.Count
-import Anisotropic.Density.Critical
-import Anisotropic.Density.GenProp
-import Anisotropic.Density.Stability.EdgeTools
-import Anisotropic.Entrywise.DiagModel
-import Anisotropic.Framework.Domination
-import Anisotropic.Gaussian.Spectral
-import Anisotropic.Instances.MarchenkoPastur
-import Anisotropic.Instances.Models
-import Anisotropic.Probability.NormBound.GaussianLower
-import Anisotropic.Rigidity.Defs
+module
+
+public import Anisotropic.MainDefs
+public import Anisotropic.Density.Basic
+public import Anisotropic.Density.Count
+public import Anisotropic.Density.Critical
+public import Anisotropic.Density.GenProp
+public import Anisotropic.Density.Stability.EdgeTools
+public import Anisotropic.Entrywise.DiagModel
+public import Anisotropic.Framework.Domination
+public import Anisotropic.Gaussian.Spectral
+public import Anisotropic.Instances.MarchenkoPastur
+public import Anisotropic.Instances.Models
+public import Anisotropic.Probability.NormBound.GaussianLower
+public import Anisotropic.Rigidity.Defs
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator
@@ -23,47 +28,15 @@ variable {M N : ℕ}
 
 /-! # The curvature `ϖ_k`, the rescaled extreme eigenvalues `q_{k,l}` and the Gaussian reference value `bRef` -/
 
-/-- `ϖ_k = (|f''(x_k)|/2)^{1/3}`. -/
-def edgeScale (N : ℕ) (σ : Fin M → ℝ) (k : ℕ) : ℝ :=
-  (|fR2 N σ (xCrit N σ k)| / 2) ^ (1 / 3 : ℝ)
-
-/-- The sign `(-1)^{k+1}`: `1` at the upper end of a component, `-1` at its lower end. -/
-def edgeSign (k : ℕ) : ℝ := if k % 2 = 1 then 1 else -1
-
-/-- The index (in decreasing order) of the `i`-th extreme eigenvalue at the edge `k`:
-`d_{k̂-1} + i` for odd `k` and `d_{k̂} + 1 - i` for even `k`, `k̂ = ⌈k/2⌉`. -/
-def edgeIdx (N : ℕ) (σ : Fin M → ℝ) (k i : ℕ) : ℕ :=
-  if k % 2 = 1 then cumCount N σ ((k + 1) / 2 - 1) + i
-  else cumCount N σ ((k + 1) / 2) + 1 - i
-
 /-- The number of eigenvalues beyond the edge `k` on its gap side: `d_{k̂-1}` (odd `k`) or
 `N - d_{k̂}` (even `k`). -/
 def edgeD (N : ℕ) (σ : Fin M → ℝ) (k : ℕ) : ℕ :=
   if k % 2 = 1 then cumCount N σ ((k + 1) / 2 - 1) else N - cumCount N σ ((k + 1) / 2)
 
-/-- `q_{k,l}` for a symmetric `N × N` matrix `A` and the spectral data `σ`:
-`q_{2j-1,l} = N^{2/3} ϖ⁻¹ (λ_{j,i} - a_{2j-1})_{i ≤ l}`,
-`q_{2j,l} = -N^{2/3} ϖ⁻¹ (λ_{j,N_j+1-i} - a_{2j})_{i ≤ l}`. -/
-def qVecA (N : ℕ) (σ : Fin M → ℝ) {n : ℕ} (A : Matrix (Fin n) (Fin n) ℝ) (k l : ℕ) :
-    Fin l → ℝ :=
-  fun i => edgeSign k * (N : ℝ) ^ (2 / 3 : ℝ) / edgeScale N σ k *
-    (sortedEig A (edgeIdx N σ k (i + 1)) - edgeVal N σ k)
-
 /-- `q_{k,l}` under (T_diag), from the eigenvalues of `Q_N = Xᵀ Σ X`. -/
 def qVec (Sig : Matrix (Fin M) (Fin M) ℝ) (Xm : Matrix (Fin M) (Fin N) ℝ) (k l : ℕ) :
     Fin l → ℝ :=
   qVecA N (specOf Sig) (QN Sig Xm) k l
-
-/-- `q_{k,l}` for a general `T`, from the eigenvalues of `Xᵀ Tᵀ T X` and the spectral data of
-`Σ = T Tᵀ`. -/
-def qVecT {K : ℕ} (T : Matrix (Fin M) (Fin K) ℝ) (Xm : Matrix (Fin K) (Fin N) ℝ) (k l : ℕ) :
-    Fin l → ℝ :=
-  qVecA N (specOf (T * Tᵀ)) (QN (Tᵀ * T) Xm) k l
-
-/-- The reference value `b_N(h, π)` of Theorem 3.18: `E h(q_{k,l})` for Gaussian `X` and
-`Σ = diag(σ)`. -/
-def bRef (N : ℕ) (σ : Fin M → ℝ) (k l : ℕ) (h : (Fin l → ℝ) → ℝ) : ℝ :=
-  ∫ ω, h (qVecA N σ (QN (diagonal σ) (gaussX M N ω)) k l)
 
 /-- The rescaled eigenvalues `N^{2/3} ϖ⁻¹ (λ_{d+i} - a)_{i ≤ l}` of a symmetric matrix at an
 upper edge `a` with `d` eigenvalues above it. -/

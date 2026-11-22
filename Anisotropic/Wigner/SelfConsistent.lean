@@ -1,4 +1,9 @@
-import Anisotropic.Framework.Domination
+module
+
+public import Anisotropic.MainDefs
+public import Anisotropic.Framework.Domination
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator
@@ -9,14 +14,6 @@ open Classical
 namespace Anisotropic
 
 /-! # The Stieltjes transform of `A`, the definition of `m^W`, uniqueness, and the semicircle check at `A = 0`, `z = i` -/
-
-/-- `m_A(w) = N⁻¹ ∑ᵢ (aᵢ − w)⁻¹` for the eigenvalues `a` of `A`. -/
-def stieltjesA {N : ℕ} (a : Fin N → ℝ) (w : ℂ) : ℂ := (N : ℂ)⁻¹ * ∑ i, ((a i : ℂ) - w)⁻¹
-
-/-- `m^W(z)`: the solution `m ∈ ℂ₊` of `m = N⁻¹ tr(−m + A − z)⁻¹ = m_A(z + m)` (§12.1);
-junk value `0` when there is none. -/
-def mW {N : ℕ} (a : Fin N → ℝ) (z : ℂ) : ℂ :=
-  if h : ∃ m : ℂ, 0 < m.im ∧ m = stieltjesA a (z + m) then h.choose else 0
 
 /-- `m^W` depends only on the spectrum of `A` (§12.1). -/
 theorem mW_comp_perm {N : ℕ} (a : Fin N → ℝ) (e : Equiv.Perm (Fin N)) (z : ℂ) :

@@ -1,6 +1,10 @@
-import Anisotropic.Comparison.HatA
-import Anisotropic.Comparison.MainI
-import Anisotropic.Gaussian.Main
+module
+
+public import Anisotropic.Comparison.HatA
+public import Anisotropic.Comparison.MainI
+public import Anisotropic.Gaussian.Main
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

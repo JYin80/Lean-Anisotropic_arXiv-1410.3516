@@ -1,5 +1,9 @@
-import Anisotropic.Comparison.RoughBound
-import Anisotropic.LinAlg.Expansion
+module
+
+public import Anisotropic.Comparison.RoughBound
+public import Anisotropic.LinAlg.Expansion
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

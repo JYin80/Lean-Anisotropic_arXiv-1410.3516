@@ -1,5 +1,9 @@
-import Anisotropic.Entrywise.LambdaO
-import Anisotropic.Framework.DominationUnion
+module
+
+public import Anisotropic.Entrywise.LambdaO
+public import Anisotropic.Framework.DominationUnion
+
+@[expose] public section
 
 /-! # Lemma 5.2: (Lambda_o_Z_bound) and (Lambda_o_Z_bound_initial)
 

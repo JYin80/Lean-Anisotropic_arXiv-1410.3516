@@ -1,28 +1,32 @@
-import Anisotropic.Density.Count
-import Anisotropic.Density.Critical
-import Anisotropic.Density.GenProp
-import Anisotropic.Density.Stability.EdgeTools
-import Anisotropic.EdgeUniv.Defs
-import Anisotropic.EdgeUniv.Eigen
-import Anisotropic.EdgeUniv.Invariance
-import Anisotropic.EdgeUniv.Reduction
-import Anisotropic.EdgeUniv.RegS
-import Anisotropic.Entrywise.DiagModel
-import Anisotropic.Framework.Domination
-import Anisotropic.Framework.Model
-import Anisotropic.Gaussian.Ensemble
-import Anisotropic.GeneralT.Model
-import Anisotropic.GeneralT.Spectra
-import Anisotropic.Instances.MarchenkoPasturTwo
-import Anisotropic.Instances.Models
-import Anisotropic.LinAlg.Spectral
-import Anisotropic.Probability.NormBound.GaussianLower
-import Anisotropic.Qdot.Defs
-import Anisotropic.Qdot.EdgeCompare
-import Anisotropic.Qdot.EdgeCompareMain
-import Anisotropic.Qdot.EdgeDefs
-import Anisotropic.Qdot.EdgeRegime
-import Anisotropic.Rigidity.Defs
+module
+
+public import Anisotropic.Density.Count
+public import Anisotropic.Density.Critical
+public import Anisotropic.Density.GenProp
+public import Anisotropic.Density.Stability.EdgeTools
+public import Anisotropic.EdgeUniv.Defs
+public import Anisotropic.EdgeUniv.Eigen
+public import Anisotropic.EdgeUniv.Invariance
+public import Anisotropic.EdgeUniv.Reduction
+public import Anisotropic.EdgeUniv.RegS
+public import Anisotropic.Entrywise.DiagModel
+public import Anisotropic.Framework.Domination
+public import Anisotropic.Framework.Model
+public import Anisotropic.Gaussian.Ensemble
+public import Anisotropic.GeneralT.Model
+public import Anisotropic.GeneralT.Spectra
+public import Anisotropic.Instances.MarchenkoPasturTwo
+public import Anisotropic.Instances.Models
+public import Anisotropic.LinAlg.Spectral
+public import Anisotropic.Probability.NormBound.GaussianLower
+public import Anisotropic.Qdot.Defs
+public import Anisotropic.Qdot.EdgeCompare
+public import Anisotropic.Qdot.EdgeCompareMain
+public import Anisotropic.Qdot.EdgeDefs
+public import Anisotropic.Qdot.EdgeRegime
+public import Anisotropic.Rigidity.Defs
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

@@ -1,5 +1,9 @@
-import Anisotropic.Probability.NormBound.WalkCount
-import Anisotropic.Framework.Model
+module
+
+public import Anisotropic.Probability.NormBound.WalkCount
+public import Anisotropic.Framework.Model
+
+@[expose] public section
 
 /-!
 # Trace moment of `Y Yᵀ`

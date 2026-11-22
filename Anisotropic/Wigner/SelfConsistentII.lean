@@ -1,6 +1,11 @@
-import Anisotropic.Density.SelfConsistent
-import Anisotropic.Framework.Domination
-import Anisotropic.Wigner.SelfConsistent
+module
+
+public import Anisotropic.MainDefs
+public import Anisotropic.Density.SelfConsistent
+public import Anisotropic.Framework.Domination
+public import Anisotropic.Wigner.SelfConsistent
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator
@@ -11,10 +16,6 @@ open Classical
 namespace Anisotropic
 
 /-! # `m^W`: existence by continuation, its equation, derivative, lower bound on `Im m^W`, and `Ψ^W` -/
-
-/-- `Ψ^W(z) = (Im m^W/(Nη))^{1/2} + (Nη)⁻¹`. -/
-def PsiW {N : ℕ} (a : Fin N → ℝ) (z : ℂ) : ℝ :=
-  √((mW a z).im / (N * z.im)) + 1 / (N * z.im)
 
 /-! ## Auxiliary facts on `m_A`, `S(w) = N⁻¹ ∑ᵢ |aᵢ − w|⁻²` and `T(w) = N⁻¹ ∑ᵢ (aᵢ − w)⁻²` -/
 

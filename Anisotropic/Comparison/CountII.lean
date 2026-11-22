@@ -1,6 +1,10 @@
-import Anisotropic.Comparison.ColumnMoment
-import Anisotropic.Comparison.WordBounds
-import Anisotropic.Framework.DominationMoment
+module
+
+public import Anisotropic.Comparison.ColumnMoment
+public import Anisotropic.Comparison.WordBounds
+public import Anisotropic.Framework.DominationMoment
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

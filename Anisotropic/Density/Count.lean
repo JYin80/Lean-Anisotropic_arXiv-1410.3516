@@ -1,4 +1,9 @@
-import Anisotropic.Density.Structure
+module
+
+public import Anisotropic.MainDefs
+public import Anisotropic.Density.Structure
+
+@[expose] public section
 
 /-!
 # Band counts `N_k` (Lemma A.1) and regularity (Definition 2.7)
@@ -34,10 +39,6 @@ open Classical
 namespace Anisotropic
 
 variable {M : ℕ}
-
-/-- `N_k = N ϱ([a_{2k}, a_{2k-1}])`, (def_N_k). -/
-def bandCount (N : ℕ) (σ : Fin M → ℝ) (k : ℕ) : ℝ :=
-  N * (varrho N σ (Set.Icc (edgeVal N σ (2 * k)) (edgeVal N σ (2 * k - 1)))).toReal
 
 /-! ## The measure `ϱ` on points, on `(0, ∞)` and on bands -/
 
@@ -671,17 +672,6 @@ theorem Ni_sum (N : ℕ) (σ : Fin M → ℝ) (hσ : ∀ j, 0 < σ j) (hN : 0 < 
   exact ⟨h1, h2⟩
 
 /-! ## Definition 2.7 (regularity) -/
-
-/-- Definition 2.7 (i), (reg: edge). The third condition is void when `x_k = ∞`. -/
-def RegularEdge (τ : ℝ) (N : ℕ) (σ : Fin M → ℝ) (k : ℕ) : Prop :=
-  1 ≤ k ∧ k ≤ 2 * numBands N σ ∧ τ ≤ edgeVal N σ k ∧
-    (∀ l, 1 ≤ l → l ≤ 2 * numBands N σ → l ≠ k → τ ≤ |edgeVal N σ k - edgeVal N σ l|) ∧
-    (¬ (k = 2 * numBands N σ ∧ yEdge N σ = 0) → ∀ s ∈ posVals σ, τ ≤ |xCrit N σ k + s⁻¹|)
-
-/-- Definition 2.7 (ii), with the explicit function `c : τ' ↦ c_{τ,τ'}`. -/
-def RegularBulk (c : ℝ → ℝ) (N : ℕ) (σ : Fin M → ℝ) (k : ℕ) : Prop :=
-  1 ≤ k ∧ k ≤ numBands N σ ∧ ∀ τ' > 0, 0 < c τ' ∧
-    ∀ E ∈ Set.Icc (edgeVal N σ (2 * k) + τ') (edgeVal N σ (2 * k - 1) - τ'), c τ' ≤ rhoDens N σ E
 
 /-! ## Instances
 

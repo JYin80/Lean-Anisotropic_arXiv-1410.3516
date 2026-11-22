@@ -1,4 +1,8 @@
-import Anisotropic.Entrywise.Main
+module
+
+public import Anisotropic.Entrywise.Main
+
+@[expose] public section
 
 /-! # (improved_avg_G) for `Σ = diag(σ)`
 

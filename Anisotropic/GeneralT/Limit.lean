@@ -1,11 +1,15 @@
-import Anisotropic.Density.Boundary
-import Anisotropic.Density.SelfConsistent
-import Anisotropic.Density.Varrho
-import Anisotropic.Entrywise.Defs
-import Anisotropic.Entrywise.DiagModel
-import Anisotropic.GeneralT.Model
-import Anisotropic.GeneralT.Spectra
-import Anisotropic.LinAlg.Blocks
+module
+
+public import Anisotropic.Density.Boundary
+public import Anisotropic.Density.SelfConsistent
+public import Anisotropic.Density.Varrho
+public import Anisotropic.Entrywise.Defs
+public import Anisotropic.Entrywise.DiagModel
+public import Anisotropic.GeneralT.Model
+public import Anisotropic.GeneralT.Spectra
+public import Anisotropic.LinAlg.Blocks
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

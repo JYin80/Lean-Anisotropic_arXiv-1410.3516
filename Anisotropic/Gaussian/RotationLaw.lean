@@ -1,6 +1,10 @@
-import Anisotropic.Gaussian.Rotation
-import Anisotropic.Gaussian.Spectral
-import Anisotropic.Entrywise.Defs
+module
+
+public import Anisotropic.Gaussian.Rotation
+public import Anisotropic.Gaussian.Spectral
+public import Anisotropic.Entrywise.Defs
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

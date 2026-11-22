@@ -1,7 +1,11 @@
-import Anisotropic.Entrywise.Control
-import Anisotropic.Density.Stability.Defs
-import Anisotropic.LinAlg.OpBound
-import Anisotropic.Density.Varrho
+module
+
+public import Anisotropic.Entrywise.Control
+public import Anisotropic.Density.Stability.Defs
+public import Anisotropic.LinAlg.OpBound
+public import Anisotropic.Density.Varrho
+
+@[expose] public section
 
 /-! # The continuity argument of Proposition 5.1
 

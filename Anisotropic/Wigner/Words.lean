@@ -1,7 +1,11 @@
-import Anisotropic.Comparison.Words
-import Anisotropic.Framework.Domination
-import Anisotropic.LinAlg.Basic
-import Anisotropic.Wigner.Defs
+module
+
+public import Anisotropic.Comparison.Words
+public import Anisotropic.Framework.Domination
+public import Anisotropic.LinAlg.Basic
+public import Anisotropic.Wigner.Defs
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

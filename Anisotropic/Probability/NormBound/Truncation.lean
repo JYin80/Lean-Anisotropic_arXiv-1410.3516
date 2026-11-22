@@ -1,4 +1,8 @@
-import Anisotropic.Framework.DominationUnion
+module
+
+public import Anisotropic.Framework.DominationUnion
+
+@[expose] public section
 
 /-!
 # Truncation of the entries

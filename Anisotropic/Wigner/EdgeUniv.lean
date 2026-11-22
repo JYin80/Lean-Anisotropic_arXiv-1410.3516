@@ -1,17 +1,21 @@
-import Anisotropic.EdgeUniv.Defs
-import Anisotropic.EdgeUniv.Reduction
-import Anisotropic.Entrywise.DiagModel
-import Anisotropic.Framework.Domination
-import Anisotropic.Rigidity.Defs
-import Anisotropic.Wigner.AvgMain
-import Anisotropic.Wigner.Defs
-import Anisotropic.Wigner.EdgeCompare
-import Anisotropic.Wigner.EdgeDefs
-import Anisotropic.Wigner.EdgeLocal
-import Anisotropic.Wigner.EdgeRegime
-import Anisotropic.Wigner.EdgeSym
-import Anisotropic.Wigner.Model
-import Anisotropic.Wigner.Rigid
+module
+
+public import Anisotropic.EdgeUniv.Defs
+public import Anisotropic.EdgeUniv.Reduction
+public import Anisotropic.Entrywise.DiagModel
+public import Anisotropic.Framework.Domination
+public import Anisotropic.Rigidity.Defs
+public import Anisotropic.Wigner.AvgMain
+public import Anisotropic.Wigner.Defs
+public import Anisotropic.Wigner.EdgeCompare
+public import Anisotropic.Wigner.EdgeDefs
+public import Anisotropic.Wigner.EdgeLocal
+public import Anisotropic.Wigner.EdgeRegime
+public import Anisotropic.Wigner.EdgeSym
+public import Anisotropic.Wigner.Model
+public import Anisotropic.Wigner.Rigid
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

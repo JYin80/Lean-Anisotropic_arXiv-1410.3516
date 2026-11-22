@@ -1,13 +1,17 @@
-import Anisotropic.Density.Boundary
-import Anisotropic.Density.GenProp
-import Anisotropic.Density.Ordering
-import Anisotropic.Density.Structure
-import Anisotropic.Density.Varrho
-import Anisotropic.Entrywise.DiagModel
-import Anisotropic.GeneralT.Limit
-import Anisotropic.GeneralT.Spectra
-import Anisotropic.Rigidity.Defs
-import Anisotropic.Rigidity.Segment
+module
+
+public import Anisotropic.Density.Boundary
+public import Anisotropic.Density.GenProp
+public import Anisotropic.Density.Ordering
+public import Anisotropic.Density.Structure
+public import Anisotropic.Density.Varrho
+public import Anisotropic.Entrywise.DiagModel
+public import Anisotropic.GeneralT.Limit
+public import Anisotropic.GeneralT.Spectra
+public import Anisotropic.Rigidity.Defs
+public import Anisotropic.Rigidity.Segment
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

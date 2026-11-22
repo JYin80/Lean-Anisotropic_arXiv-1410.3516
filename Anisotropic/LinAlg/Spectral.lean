@@ -1,4 +1,8 @@
-import Anisotropic.LinAlg.Blocks
+module
+
+public import Anisotropic.LinAlg.Blocks
+
+@[expose] public section
 
 open Matrix ComplexOrder
 set_option linter.unusedSectionVars false

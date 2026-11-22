@@ -1,4 +1,8 @@
-import Anisotropic.Probability.LDE.Main
+module
+
+public import Anisotropic.Probability.LDE.Main
+
+@[expose] public section
 
 /-!
 # Large deviation estimates with coefficients independent of the family

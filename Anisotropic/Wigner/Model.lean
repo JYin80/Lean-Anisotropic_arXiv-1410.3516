@@ -1,5 +1,10 @@
-import Anisotropic.Framework.Domination
-import Anisotropic.Framework.Model
+module
+
+public import Anisotropic.MainDefs
+public import Anisotropic.Framework.Domination
+public import Anisotropic.Framework.Model
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator
@@ -15,20 +20,6 @@ section Model
 
 variable {Ω : Type*} [MeasureSpace Ω]
 
-/-- The upper-triangular index set `{(i, j) : i ≤ j}`. -/
-abbrev UpperIdx (N : ℕ) : Type := {p : Fin N × Fin N // p.1 ≤ p.2}
-
-/-- The entry conditions of §12.1 for a Wigner matrix `W`: symmetric, measurable entries,
-independent upper-triangular entries satisfying (cond on entries of X) and (moments of X-1). -/
-structure WignerEntries (C : ℕ → ℝ) (N : ℕ) (W : Ω → Matrix (Fin N) (Fin N) ℝ) : Prop where
-  measurable : ∀ i j, Measurable fun ω => W ω i j
-  symm : ∀ ω, (W ω)ᵀ = W ω
-  indep : iIndepFun (fun (p : UpperIdx N) (ω : Ω) => W ω p.1.1 p.1.2) ℙ
-  mean : ∀ i j, ∫ ω, W ω i j = 0
-  var : ∀ i j, ∫ ω, W ω i j ^ 2 = 1 / (N : ℝ)
-  integrable_moment : ∀ (p : ℕ) i j, Integrable fun ω => |Real.sqrt N * W ω i j| ^ p
-  moment : ∀ (p : ℕ) i j, ∫ ω, |Real.sqrt N * W ω i j| ^ p ≤ C p
-
 /-- The class used by the comparison: as `WignerEntries`, except that the diagonal variance
 lies in `[1/N, 2/N]`. It contains `W`, the GOE and every interpolation between them. -/
 structure WigClassEntries (C : ℕ → ℝ) (N : ℕ) (W : Ω → Matrix (Fin N) (Fin N) ℝ) : Prop where
@@ -41,14 +32,6 @@ structure WigClassEntries (C : ℕ → ℝ) (N : ℕ) (W : Ω → Matrix (Fin N)
   var_diag_le : ∀ i, ∫ ω, W ω i i ^ 2 ≤ 2 / (N : ℝ)
   integrable_moment : ∀ (p : ℕ) i j, Integrable fun ω => |Real.sqrt N * W ω i j| ^ p
   moment : ∀ (p : ℕ) i j, ∫ ω, |Real.sqrt N * W ω i j| ^ p ≤ C p
-
-/-- The deformed Wigner model of §12.1: the entry conditions on `W`, and a deterministic real
-symmetric `A` with `‖A‖ ≤ τ⁻¹`. -/
-structure WignerModel (τ : ℝ) (C : ℕ → ℝ) (N : ℕ) (A : Matrix (Fin N) (Fin N) ℝ)
-    (W : Ω → Matrix (Fin N) (Fin N) ℝ) : Prop where
-  entries : WignerEntries C N W
-  symmA : A.IsHermitian
-  normA : ‖A‖ ≤ τ⁻¹
 
 /-- The GOE `W^Gauss` of §12.1: symmetric, independent upper-triangular entries, off-diagonal
 entries `N(0, 1/N)`, diagonal entries `N(0, 2/N)`. -/
@@ -76,24 +59,10 @@ theorem WignerEntries.toClass {C : ℕ → ℝ} {N : ℕ} {W : Ω → Matrix (Fi
 
 end Model
 
-/-- The variance of the GOE entry at `(i, j)`: `2/N` on the diagonal, `1/N` off it. -/
-def goeVar (N : ℕ) (p : Fin N × Fin N) : ℝ≥0 :=
-  if p.1 = p.2 then 2 * (N : ℝ≥0)⁻¹ else (N : ℝ≥0)⁻¹
-
-/-- The sample space of the GOE (coordinates below the diagonal are unused). -/
-def GOESpace (N : ℕ) : Type := Fin N × Fin N → ℝ
-
-instance (N : ℕ) : MeasurableSpace (GOESpace N) := MeasurableSpace.pi
-
-instance (N : ℕ) : MeasureSpace (GOESpace N) :=
-  ⟨Measure.pi fun p : Fin N × Fin N => gaussianReal 0 (goeVar N p)⟩
 
 instance (N : ℕ) : IsProbabilityMeasure (ℙ : Measure (GOESpace N)) :=
   inferInstanceAs
     (IsProbabilityMeasure (Measure.pi fun p : Fin N × Fin N => gaussianReal 0 (goeVar N p)))
-
-/-- The GOE matrix `W_{ij} = ω (min(i,j), max(i,j))` on `GOESpace N`. -/
-def goeW (N : ℕ) : GOESpace N → Matrix (Fin N) (Fin N) ℝ := fun ω i j => ω (min i j, max i j)
 
 theorem isGOE_goeW (N : ℕ) : IsGOE (goeW N) where
   measurable i j := measurable_pi_apply (X := fun _ : Fin N × Fin N => ℝ) (min i j, max i j)

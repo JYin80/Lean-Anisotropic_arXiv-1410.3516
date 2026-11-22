@@ -1,12 +1,16 @@
-import Anisotropic.Averaged.Defs
-import Anisotropic.Density.GenProp
-import Anisotropic.Density.SelfConsistent
-import Anisotropic.Density.Stability.Domains
-import Anisotropic.Density.Varrho
-import Anisotropic.Entrywise.Defs
-import Anisotropic.Entrywise.DiagModel
-import Anisotropic.Framework.Model
-import Anisotropic.Rigidity.Defs
+module
+
+public import Anisotropic.Averaged.Defs
+public import Anisotropic.Density.GenProp
+public import Anisotropic.Density.SelfConsistent
+public import Anisotropic.Density.Stability.Domains
+public import Anisotropic.Density.Varrho
+public import Anisotropic.Entrywise.Defs
+public import Anisotropic.Entrywise.DiagModel
+public import Anisotropic.Framework.Model
+public import Anisotropic.Rigidity.Defs
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

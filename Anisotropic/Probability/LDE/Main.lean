@@ -1,4 +1,8 @@
-import Anisotropic.Probability.LDE.Moment
+module
+
+public import Anisotropic.Probability.LDE.Moment
+
+@[expose] public section
 
 /-!
 # Large deviation estimates with deterministic coefficients

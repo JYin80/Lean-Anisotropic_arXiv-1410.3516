@@ -1,6 +1,10 @@
-import Anisotropic.Entrywise.Weak
-import Anisotropic.Entrywise.Iterate
-import Anisotropic.Entrywise.FA.Main
+module
+
+public import Anisotropic.Entrywise.Weak
+public import Anisotropic.Entrywise.Iterate
+public import Anisotropic.Entrywise.FA.Main
+
+@[expose] public section
 
 /-! # Theorem 3.22: the entrywise and averaged local laws for `Σ = diag(σ)`
 

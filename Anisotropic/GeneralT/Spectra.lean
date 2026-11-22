@@ -1,13 +1,17 @@
-import Anisotropic.Density.Basic
-import Anisotropic.Density.Count
-import Anisotropic.Density.Critical
-import Anisotropic.Density.SelfConsistent
-import Anisotropic.Density.Varrho
-import Anisotropic.Entrywise.Defs
-import Anisotropic.Entrywise.DiagModel
-import Anisotropic.Framework.Model
-import Anisotropic.GeneralT.Model
-import Anisotropic.Rigidity.Defs
+module
+
+public import Anisotropic.Density.Basic
+public import Anisotropic.Density.Count
+public import Anisotropic.Density.Critical
+public import Anisotropic.Density.SelfConsistent
+public import Anisotropic.Density.Varrho
+public import Anisotropic.Entrywise.Defs
+public import Anisotropic.Entrywise.DiagModel
+public import Anisotropic.Framework.Model
+public import Anisotropic.GeneralT.Model
+public import Anisotropic.Rigidity.Defs
+
+@[expose] public section
 
 /-!
 # Zero atoms, the spectra of `T Tᵀ` and `Tᵀ T`, and `Ŝ + κ P₀`

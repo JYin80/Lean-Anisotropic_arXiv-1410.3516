@@ -1,6 +1,10 @@
-import Anisotropic.Gaussian.Ensemble
-import Anisotropic.Gaussian.Spectral
-import Anisotropic.Framework.Domination
+module
+
+public import Anisotropic.Gaussian.Ensemble
+public import Anisotropic.Gaussian.Spectral
+public import Anisotropic.Framework.Domination
+
+@[expose] public section
 
 /-!
 # Rotation invariance of the Gaussian ensemble

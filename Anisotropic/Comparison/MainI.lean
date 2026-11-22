@@ -1,6 +1,10 @@
-import Anisotropic.Comparison.SelfConsistent
-import Anisotropic.Comparison.Gronwall
-import Anisotropic.Gaussian.Main
+module
+
+public import Anisotropic.Comparison.SelfConsistent
+public import Anisotropic.Comparison.Gronwall
+public import Anisotropic.Gaussian.Main
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

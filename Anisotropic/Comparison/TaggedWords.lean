@@ -1,4 +1,8 @@
-import Anisotropic.Comparison.Brackets
+module
+
+public import Anisotropic.Comparison.Brackets
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

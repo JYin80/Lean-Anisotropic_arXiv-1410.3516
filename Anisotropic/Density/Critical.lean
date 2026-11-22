@@ -1,4 +1,9 @@
-import Anisotropic.Density.Poly
+module
+
+public import Anisotropic.MainDefs
+public import Anisotropic.Density.Poly
+
+@[expose] public section
 
 /-!
 # Critical points of `f`
@@ -19,48 +24,6 @@ namespace Anisotropic
 variable {M : ℕ}
 
 /-! ## Critical points and critical values (Lemmas 2.4, 2.5) -/
-
-/-- `Q(x) = x² Π_s (1 + s x)² f'(x)`; its real roots off the poles are the finite
-critical points of `f`, counted as in §2.2. -/
-def critPoly (N : ℕ) (σ : Fin M → ℝ) : ℝ[X] :=
-  ∏ s ∈ posVals σ, (1 + C s * X) ^ 2 -
-    X ^ 2 * ∑ s ∈ posVals σ, C (weight N σ s * s ^ 2) *
-      ∏ s' ∈ (posVals σ).erase s, (1 + C s' * X) ^ 2
-
-/-- `x ∈ (-s_n⁻¹, 0)`, i.e. `x ∈ I_1 ∪ ⋯ ∪ I_n` or `x` is an interior pole. -/
-def InInner (σ : Fin M → ℝ) (x : ℝ) : Prop := x < 0 ∧ ∃ s ∈ posVals σ, 0 < 1 + s * x
-
-/-- The multiset `𝒞 ∩ (I_1 ∪ ⋯ ∪ I_n)`. -/
-def innerCrit (N : ℕ) (σ : Fin M → ℝ) : Multiset ℝ :=
-  (critPoly N σ).roots.filter (InInner σ)
-
-/-- The number `p` of bulk components, `|𝒞| = 2p`. -/
-def numBands (N : ℕ) (σ : Fin M → ℝ) : ℕ := (Multiset.card (innerCrit N σ) + 1) / 2
-
-/-- `F(y) = f(1/y)`: the chart of `I_0` at `∞`, `I_0 ↔ (-s_n, ∞)`, `∞ ↔ 0`. -/
-def FChart (N : ℕ) (σ : Fin M → ℝ) (y : ℝ) : ℝ :=
-  -y + ∑ s ∈ posVals σ, weight N σ s * s * y / (y + s)
-
-/-- `F'`. -/
-def FChart1 (N : ℕ) (σ : Fin M → ℝ) (y : ℝ) : ℝ :=
-  -1 + ∑ s ∈ posVals σ, weight N σ s * s ^ 2 / (y + s) ^ 2
-
-/-- `y ∈ (-s_n, ∞)`, i.e. `0 < y + s` for every `s ∈ {s_1, …, s_n}`. -/
-def InChart (σ : Fin M → ℝ) (y : ℝ) : Prop := ∀ s ∈ posVals σ, 0 < y + s
-
-/-- The critical point `x_{2p} ∈ I_0`, in the chart `y = 1/x`. -/
-def yEdge (N : ℕ) (σ : Fin M → ℝ) : ℝ :=
-  if h : ∃ y, InChart σ y ∧ FChart1 N σ y = 0 then h.choose else 0
-
-/-- `x_k`, `k = 1, …, 2p`: `x_1 ≥ ⋯ ≥ x_{2p-1}` sorted, `x_{2p} = 1/y_{2p}`
-(junk value `0` when `x_{2p} = ∞`). -/
-def xCrit (N : ℕ) (σ : Fin M → ℝ) (k : ℕ) : ℝ :=
-  if k = 2 * numBands N σ then (yEdge N σ)⁻¹
-  else ((innerCrit N σ).sort (· ≤ ·)).reverse.getD (k - 1) 0
-
-/-- The critical values `a_k = f(x_k)`, with `a_{2p} = F(y_{2p})`. -/
-def edgeVal (N : ℕ) (σ : Fin M → ℝ) (k : ℕ) : ℝ :=
-  if k = 2 * numBands N σ then FChart N σ (yEdge N σ) else fR N σ (xCrit N σ k)
 
 /-! ## Grouping the indices by value -/
 

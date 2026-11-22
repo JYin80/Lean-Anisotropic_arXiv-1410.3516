@@ -1,9 +1,14 @@
-import Anisotropic.Entrywise.DiagModel
-import Anisotropic.Framework.Domination
-import Anisotropic.LinAlg.Basic
-import Anisotropic.Wigner.Model
-import Anisotropic.Wigner.SelfConsistent
-import Anisotropic.Wigner.SelfConsistentII
+module
+
+public import Anisotropic.MainDefs
+public import Anisotropic.Entrywise.DiagModel
+public import Anisotropic.Framework.Domination
+public import Anisotropic.LinAlg.Basic
+public import Anisotropic.Wigner.Model
+public import Anisotropic.Wigner.SelfConsistent
+public import Anisotropic.Wigner.SelfConsistentII
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator
@@ -14,18 +19,6 @@ open Classical
 namespace Anisotropic
 
 /-! # `G^W`, `Π^W`, the standing bound, the domain `𝐃^W` and Definition 12.1 (the four laws) -/
-
-/-- `G^W(z) = (W + A − z)⁻¹`. -/
-def GW {N : ℕ} (A Wm : Matrix (Fin N) (Fin N) ℝ) (z : ℂ) : Matrix (Fin N) (Fin N) ℂ :=
-  (cplx (Wm + A) - z • (1 : Matrix (Fin N) (Fin N) ℂ))⁻¹
-
-/-- `Π^W(z) = (−m^W(z) + A − z)⁻¹`. -/
-def piW {N : ℕ} (A : Matrix (Fin N) (Fin N) ℝ) (z : ℂ) : Matrix (Fin N) (Fin N) ℂ :=
-  (cplx A - (mW (specOf A) z + z) • (1 : Matrix (Fin N) (Fin N) ℂ))⁻¹
-
-/-- `N⁻¹ tr G^W(z)`. -/
-def mNW {N : ℕ} (A Wm : Matrix (Fin N) (Fin N) ℝ) (z : ℂ) : ℂ :=
-  (N : ℂ)⁻¹ * trace (GW A Wm z)
 
 /-- The eigenvalues of a real symmetric `A` are bounded by `‖A‖`. -/
 theorem abs_specOf_le_norm {N : ℕ} {A : Matrix (Fin N) (Fin N) ℝ} (hA : A.IsHermitian)
@@ -38,10 +31,6 @@ theorem abs_specOf_le_norm {N : ℕ} {A : Matrix (Fin N) (Fin N) ℝ} (hA : A.Is
     rfl
   rw [hv, norm_smul, (hA.eigenvectorBasis).orthonormal.1 i, mul_one] at h
   simpa using h
-
-/-- The standing bound of §12.1: `|−m^W(z) + aᵢ − z| ≥ τ` on `S`. -/
-def StandingBoundW {N : ℕ} (τ : ℝ) (a : Fin N → ℝ) (S : Set ℂ) : Prop :=
-  ∀ z ∈ S, ∀ i, τ ≤ ‖-(mW a z) + (a i : ℂ) - z‖
 
 /-- Conjugating a bilinear form by a real matrix `Q` rotates the test vectors by `Q`. -/
 private lemma defs_testBilin_conj {ι : Type*} [Fintype ι] (Q : Matrix ι ι ℝ) (B : Matrix ι ι ℂ)
@@ -257,33 +246,9 @@ theorem standingBoundW_of_lt {N : ℕ} (hN : 1 ≤ N) {a : Fin N → ℝ} {r : �
     constructor <;> linarith [h3.1, h3.2, h4.1, h4.2]
   linarith
 
-/-- `𝐃^W(τ, N) = {|E| ≤ τ⁻¹, N^{−1+τ} ≤ η ≤ τ⁻¹}`. -/
-def domW (τ : ℝ) (N : ℕ) : Set ℂ :=
-  {z | 0 < z.im ∧ |z.re| ≤ τ⁻¹ ∧ (N : ℝ) ^ (-1 + τ) ≤ z.im ∧ z.im ≤ τ⁻¹}
-
-/-- Definition 12.1: `S ⊆ 𝐃^W` closed under increasing `η` at fixed `E` inside `𝐃^W`. -/
-def SpectralDomainW (τ : ℝ) (N : ℕ) (S : Set ℂ) : Prop :=
-  S ⊆ domW τ N ∧ ∀ z ∈ S, ∀ w ∈ domW τ N, w.re = z.re → z.im ≤ w.im → w ∈ S
-
 section Laws
 
 variable {Ω : Type*} [MeasureSpace Ω]
-
-/-- Definition 12.1 (i) at fixed `N, ε, D`: `(G^W − Π^W)_{st} = O_≺(Ψ^W)` on `S`. -/
-def EntrywiseLawWAt (N : ℕ) (ε D : ℝ) (A : Matrix (Fin N) (Fin N) ℝ)
-    (W : Ω → Matrix (Fin N) (Fin N) ℝ) (S : Set ℂ) : Prop :=
-  ∀ z ∈ S, ∀ s t, ODomAt N ε D (fun ω => (GW A (W ω) z - piW A z) s t)
-    (fun _ => PsiW (specOf A) z)
-
-/-- Definition 12.1 (ii) at fixed `N, ε, D`: `G^W − Π^W = O_≺(Ψ^W)` on `S`. -/
-def AnisotropicLawWAt (N : ℕ) (ε D : ℝ) (A : Matrix (Fin N) (Fin N) ℝ)
-    (W : Ω → Matrix (Fin N) (Fin N) ℝ) (S : Set ℂ) : Prop :=
-  ∀ z ∈ S, ODomMatAt N ε D (fun ω => GW A (W ω) z - piW A z) (fun _ => PsiW (specOf A) z)
-
-/-- Definition 12.1 (iii) at fixed `N, ε, D`: `N⁻¹ tr G^W − m^W = O_≺((Nη)⁻¹)` on `S`. -/
-def AveragedLawWAt (N : ℕ) (ε D : ℝ) (A : Matrix (Fin N) (Fin N) ℝ)
-    (W : Ω → Matrix (Fin N) (Fin N) ℝ) (S : Set ℂ) : Prop :=
-  ∀ z ∈ S, ODomAt N ε D (fun ω => mNW A (W ω) z - mW (specOf A) z) (fun _ => 1 / (N * z.im))
 
 /-- The averaged law with control `Φ`: `N⁻¹ tr G^W − m^W = O_≺(Φ)` on `S`. -/
 def AveragedPhiLawWAt (N : ℕ) (ε D : ℝ) (A : Matrix (Fin N) (Fin N) ℝ)
@@ -299,10 +264,6 @@ def rhoW {N : ℕ} (a : Fin N → ℝ) (E : ℝ) : ℝ :=
 /-- The interval-support condition of §12.1: the support of `ϱ^W` is an interval `[Lm, Lp]`. -/
 def IntervalSupportW {N : ℕ} (a : Fin N → ℝ) (Lm Lp : ℝ) : Prop :=
   Lm < Lp ∧ tsupport (rhoW a) = Set.Icc Lm Lp
-
-/-- (b) of Theorem 12.2 on `S`: `Ψ^W ≤ N^{−1/4−c₀}`. -/
-def PsiSmallW {N : ℕ} (c₀ : ℝ) (a : Fin N → ℝ) (S : Set ℂ) : Prop :=
-  ∀ z ∈ S, PsiW a z ≤ (N : ℝ) ^ (-1 / 4 - c₀)
 
 /-- `𝐃^W(τ, N)` is itself a spectral domain. -/
 theorem spectralDomainW_domW (τ : ℝ) (N : ℕ) : SpectralDomainW τ N (domW τ N) :=

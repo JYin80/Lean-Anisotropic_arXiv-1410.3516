@@ -1,6 +1,10 @@
-import Anisotropic.Entrywise.DiagModel
-import Anisotropic.LinAlg.Spectral
-import Anisotropic.Rigidity.Defs
+module
+
+public import Anisotropic.Entrywise.DiagModel
+public import Anisotropic.LinAlg.Spectral
+public import Anisotropic.Rigidity.Defs
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

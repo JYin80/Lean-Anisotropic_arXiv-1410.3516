@@ -1,7 +1,11 @@
-import Anisotropic.Gaussian.Parity
-import Anisotropic.Gaussian.BadEvent
-import Anisotropic.Framework.DominationMoment
-import Anisotropic.Density.Stability.Domains
+module
+
+public import Anisotropic.Gaussian.Parity
+public import Anisotropic.Gaussian.BadEvent
+public import Anisotropic.Framework.DominationMoment
+public import Anisotropic.Density.Stability.Domains
+
+@[expose] public section
 
 /-!
 # Lemma 6.2 and Proposition 6.1 for Gaussian `X`

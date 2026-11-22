@@ -1,8 +1,12 @@
-import Anisotropic.Density.SelfConsistent
-import Anisotropic.Density.Stability.Defs
-import Anisotropic.Density.Varrho
-import Anisotropic.Rigidity.Defs
-import Anisotropic.Rigidity.Exclusion
+module
+
+public import Anisotropic.Density.SelfConsistent
+public import Anisotropic.Density.Stability.Defs
+public import Anisotropic.Density.Varrho
+public import Anisotropic.Rigidity.Defs
+public import Anisotropic.Rigidity.Exclusion
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

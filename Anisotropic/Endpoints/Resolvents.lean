@@ -1,10 +1,15 @@
-import Anisotropic.Density.SelfConsistent
-import Anisotropic.Entrywise.Defs
-import Anisotropic.Entrywise.DiagModel
-import Anisotropic.Framework.Domination
-import Anisotropic.Framework.Model
-import Anisotropic.LinAlg.Basic
-import Anisotropic.LinAlg.Blocks
+module
+
+public import Anisotropic.MainDefs
+public import Anisotropic.Density.SelfConsistent
+public import Anisotropic.Entrywise.Defs
+public import Anisotropic.Entrywise.DiagModel
+public import Anisotropic.Framework.Domination
+public import Anisotropic.Framework.Model
+public import Anisotropic.LinAlg.Basic
+public import Anisotropic.LinAlg.Blocks
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator
@@ -17,21 +22,6 @@ namespace Anisotropic
 variable {M N : ℕ}
 
 /-! # `R_N`, `R_M`, (G_N_ident), (G_M_ident) and the laws for `R_N`, `R_M` -/
-
-/-- `Σ^r` on `ran Σ` and `0` on `ker Σ`, by spectral calculus (for `Σ > 0` the power of `Σ`;
-for `r = −1/2` and singular `Σ ≥ 0`, the pseudo-inverse square root). -/
-def sigPow (Sig : Matrix (Fin M) (Fin M) ℝ) (r : ℝ) : Matrix (Fin M) (Fin M) ℝ :=
-  cfc (fun x : ℝ => if 0 < x then x ^ r else 0) Sig
-
-/-- (def_RM_RN): `R_N(z) = (X^* T^* T X − z)⁻¹` for a real `M × K` matrix `T`. -/
-def RN {K : ℕ} (T : Matrix (Fin M) (Fin K) ℝ) (X : Matrix (Fin K) (Fin N) ℝ) (z : ℂ) :
-    Matrix (Fin N) (Fin N) ℂ :=
-  (cplx (Xᵀ * Tᵀ * T * X) - z • (1 : Matrix (Fin N) (Fin N) ℂ))⁻¹
-
-/-- (def_RM_RN): `R_M(z) = (T X X^* T^* − z)⁻¹`. -/
-def RM {K : ℕ} (T : Matrix (Fin M) (Fin K) ℝ) (X : Matrix (Fin K) (Fin N) ℝ) (z : ℂ) :
-    Matrix (Fin M) (Fin M) ℂ :=
-  (cplx (T * X * Xᵀ * Tᵀ) - z • (1 : Matrix (Fin M) (Fin M) ℂ))⁻¹
 
 /-! ## Spectral powers of `Σ > 0` -/
 
@@ -169,25 +159,6 @@ theorem G_M_ident {Sig : Matrix (Fin M) (Fin M) ℝ} (hSig : Sig.PosDef)
   rw [(GeqG hSig X hz).2, fromBlocks_apply₁₁, res_GM_eq hSig X hz]
 
 /-! ## The laws (R_N_edge) and (R_M_edge) -/
-
-/-- (R_N_edge) at fixed `N, ε, D` on `S`, with `m` and `Ψ` of the eigenvalues of `Σ`. -/
-def RNLawAt {Ω : Type*} [MeasureSpace Ω] (N : ℕ) (ε D : ℝ) (Sig : Matrix (Fin M) (Fin M) ℝ)
-    {K : ℕ} (T : Matrix (Fin M) (Fin K) ℝ) (X : Ω → Matrix (Fin K) (Fin N) ℝ) (S : Set ℂ) :
-    Prop :=
-  ∀ z ∈ S, ODomMatAt N ε D
-    (fun ω => RN T (X ω) z - mFun N (specOf Sig) z • (1 : Matrix (Fin N) (Fin N) ℂ))
-    (fun _ => Psi N (specOf Sig) z)
-
-/-- (R_M_edge) at fixed `N, ε, D` on `S`:
-`Σ^{−1/2}(R_M + (z(1 + mΣ))⁻¹)Σ^{−1/2} = O_≺(Ψ)`. -/
-def RMLawAt {Ω : Type*} [MeasureSpace Ω] (N : ℕ) (ε D : ℝ) (Sig : Matrix (Fin M) (Fin M) ℝ)
-    {K : ℕ} (T : Matrix (Fin M) (Fin K) ℝ) (X : Ω → Matrix (Fin K) (Fin N) ℝ) (S : Set ℂ) :
-    Prop :=
-  ∀ z ∈ S, ODomMatAt N ε D
-    (fun ω => cplx (sigPow Sig (-(1 / 2))) *
-      (RM T (X ω) z + (z • (1 + mFun N (specOf Sig) z • cplx Sig))⁻¹) *
-      cplx (sigPow Sig (-(1 / 2))))
-    (fun _ => Psi N (specOf Sig) z)
 
 /-- `⟨(v, 0), A (w, 0)⟩ = ⟨v, A_{MM} w⟩`. -/
 private theorem res_testBilin_embM (A : Matrix (Fin M ⊕ Fin N) (Fin M ⊕ Fin N) ℂ)

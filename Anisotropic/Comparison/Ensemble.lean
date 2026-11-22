@@ -1,7 +1,11 @@
-import Anisotropic.Comparison.Interpolation
-import Anisotropic.Framework.Model
-import Anisotropic.Probability.NormBound.GaussianLower
-import Anisotropic.Gaussian.Ensemble
+module
+
+public import Anisotropic.Comparison.Interpolation
+public import Anisotropic.Framework.Model
+public import Anisotropic.Probability.NormBound.GaussianLower
+public import Anisotropic.Gaussian.Ensemble
+
+@[expose] public section
 
 /-!
 # Interpolated ensembles, moment function, model classes
@@ -57,7 +61,7 @@ private structure LawProps (N : ℕ) (C : ℕ → ℝ) (ν : Measure ℝ) : Prop
   var : ∫ x, x ^ 2 ∂ν = 1 / (N : ℝ)
   moment : ∀ p : ℕ, ∫ x, |Real.sqrt N * x| ^ p ∂ν ≤ C p
 
-private instance gaussLaw_isProbabilityMeasure (N : ℕ) : IsProbabilityMeasure (gaussLaw N) := by
+instance gaussLaw_isProbabilityMeasure (N : ℕ) : IsProbabilityMeasure (gaussLaw N) := by
   unfold gaussLaw
   infer_instance
 

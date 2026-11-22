@@ -1,21 +1,25 @@
-import Anisotropic.Density.Count
-import Anisotropic.Density.Critical
-import Anisotropic.Density.Stability.EdgeTaylor
-import Anisotropic.Density.Stability.EdgeTools
-import Anisotropic.EdgeUniv.Defs
-import Anisotropic.EdgeUniv.Reduction
-import Anisotropic.EdgeUniv.SmCount
-import Anisotropic.Entrywise.DiagModel
-import Anisotropic.Framework.Domination
-import Anisotropic.Framework.Model
-import Anisotropic.Gaussian.Ensemble
-import Anisotropic.Instances.MarchenkoPastur
-import Anisotropic.Instances.Models
-import Anisotropic.Probability.NormBound.GaussianLower
-import Anisotropic.Rigidity.Counting
-import Anisotropic.Rigidity.Defs
-import Anisotropic.Rigidity.Gap
-import Anisotropic.Rigidity.GaussCount
+module
+
+public import Anisotropic.Density.Count
+public import Anisotropic.Density.Critical
+public import Anisotropic.Density.Stability.EdgeTaylor
+public import Anisotropic.Density.Stability.EdgeTools
+public import Anisotropic.EdgeUniv.Defs
+public import Anisotropic.EdgeUniv.Reduction
+public import Anisotropic.EdgeUniv.SmCount
+public import Anisotropic.Entrywise.DiagModel
+public import Anisotropic.Framework.Domination
+public import Anisotropic.Framework.Model
+public import Anisotropic.Gaussian.Ensemble
+public import Anisotropic.Instances.MarchenkoPastur
+public import Anisotropic.Instances.Models
+public import Anisotropic.Probability.NormBound.GaussianLower
+public import Anisotropic.Rigidity.Counting
+public import Anisotropic.Rigidity.Defs
+public import Anisotropic.Rigidity.Gap
+public import Anisotropic.Rigidity.GaussCount
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

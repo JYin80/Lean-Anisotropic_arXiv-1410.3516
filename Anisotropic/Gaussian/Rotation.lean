@@ -1,4 +1,8 @@
-import Anisotropic.LinAlg.Basic
+module
+
+public import Anisotropic.LinAlg.Basic
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

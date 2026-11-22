@@ -1,11 +1,15 @@
-import Anisotropic.Comparison.Ladder
-import Anisotropic.Entrywise.DiagModel
-import Anisotropic.Framework.Domination
-import Anisotropic.LinAlg.Basic
-import Anisotropic.Wigner.Defs
-import Anisotropic.Wigner.Model
-import Anisotropic.Wigner.SelfConsistent
-import Anisotropic.Wigner.SelfConsistentII
+module
+
+public import Anisotropic.Comparison.Ladder
+public import Anisotropic.Entrywise.DiagModel
+public import Anisotropic.Framework.Domination
+public import Anisotropic.LinAlg.Basic
+public import Anisotropic.Wigner.Defs
+public import Anisotropic.Wigner.Model
+public import Anisotropic.Wigner.SelfConsistent
+public import Anisotropic.Wigner.SelfConsistentII
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

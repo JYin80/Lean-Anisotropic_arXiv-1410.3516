@@ -1,5 +1,10 @@
-import Anisotropic.Density.Boundary
-import Anisotropic.Density.GenProp
+module
+
+public import Anisotropic.MainDefs
+public import Anisotropic.Density.Boundary
+public import Anisotropic.Density.GenProp
+
+@[expose] public section
 
 /-!
 # The measure `ϱ` (second half of Lemma 2.2)
@@ -30,14 +35,6 @@ namespace Anisotropic
 variable {M : ℕ}
 
 /-! ## The measure `ϱ` (second half of Lemma 2.2) -/
-
-/-- The density `π⁻¹ Im m(x + i0)`. -/
-def rhoDens (N : ℕ) (σ : Fin M → ℝ) (x : ℝ) : ℝ := (mExt N σ x).im / Real.pi
-
-/-- `ϱ = (1 - R)₊ δ₀ + 1_{(0,∞)} π⁻¹ Im m(x + i0) dx`. -/
-def varrho (N : ℕ) (σ : Fin M → ℝ) : Measure ℝ :=
-  ENNReal.ofReal (max (1 - massRatio N σ) 0) • Measure.dirac 0 +
-    (volume.restrict (Set.Ioi 0)).withDensity (fun x => ENNReal.ofReal (rhoDens N σ x))
 
 /-! ## Decay of `Im m` -/
 

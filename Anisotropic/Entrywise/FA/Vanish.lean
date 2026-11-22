@@ -1,8 +1,12 @@
-import Anisotropic.Entrywise.FA.Bounds
-import Anisotropic.Entrywise.DiagModel
-import Anisotropic.Entrywise.Indep
-import Anisotropic.Probability.LDE.Conditional
-import Anisotropic.Framework.DominationUnion
+module
+
+public import Anisotropic.Entrywise.FA.Bounds
+public import Anisotropic.Entrywise.DiagModel
+public import Anisotropic.Entrywise.Indep
+public import Anisotropic.Probability.LDE.Conditional
+public import Anisotropic.Framework.DominationUnion
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

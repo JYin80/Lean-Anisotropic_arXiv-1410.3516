@@ -1,8 +1,12 @@
-import Anisotropic.Gaussian.Ensemble
-import Anisotropic.LinAlg.Basic
-import Anisotropic.Entrywise.DiagModel
-import Anisotropic.Framework.Domination
-import Anisotropic.Density.Stability.Domains
+module
+
+public import Anisotropic.Gaussian.Ensemble
+public import Anisotropic.LinAlg.Basic
+public import Anisotropic.Entrywise.DiagModel
+public import Anisotropic.Framework.Domination
+public import Anisotropic.Density.Stability.Domains
+
+@[expose] public section
 
 /-! Eigenvalue lists and the orthogonal diagonalization. -/
 

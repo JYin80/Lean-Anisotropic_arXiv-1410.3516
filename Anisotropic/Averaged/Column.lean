@@ -1,9 +1,13 @@
-import Anisotropic.Comparison.Brackets
-import Anisotropic.Comparison.ColumnMoment
-import Anisotropic.Comparison.DegreeCount
-import Anisotropic.Comparison.TaggedWords
-import Anisotropic.Comparison.Words
-import Anisotropic.LinAlg.Basic
+module
+
+public import Anisotropic.Comparison.Brackets
+public import Anisotropic.Comparison.ColumnMoment
+public import Anisotropic.Comparison.DegreeCount
+public import Anisotropic.Comparison.TaggedWords
+public import Anisotropic.Comparison.Words
+public import Anisotropic.LinAlg.Basic
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

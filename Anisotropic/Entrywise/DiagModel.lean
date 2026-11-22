@@ -1,5 +1,10 @@
-import Anisotropic.Framework.Model
-import Anisotropic.Density.GenProp
+module
+
+public import Anisotropic.MainDefs
+public import Anisotropic.Framework.Model
+public import Anisotropic.Density.GenProp
+
+@[expose] public section
 
 /-!
 # The diagonal model and the eigenvalues of `diag(σ)`
@@ -84,10 +89,6 @@ structure DiagModel (τ : ℝ) (C : ℕ → ℝ) (M N : ℕ) (σ : Fin M → ℝ
   gap : ({i | σ i ∈ Set.Icc 0 τ}.ncard : ℝ) ≤ (1 - τ) * M
 
 end Model
-
-/-- The eigenvalues of a real symmetric matrix (junk value `0` otherwise). -/
-def specOf {K : ℕ} (A : Matrix (Fin K) (Fin K) ℝ) : Fin K → ℝ :=
-  if h : A.IsHermitian then h.eigenvalues else 0
 
 theorem specOf_eq {K : ℕ} {A : Matrix (Fin K) (Fin K) ℝ} (h : A.IsHermitian) :
     specOf A = h.eigenvalues := dite_eq_left h

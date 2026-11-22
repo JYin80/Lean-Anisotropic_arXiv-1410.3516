@@ -1,6 +1,10 @@
-import Anisotropic.Framework.Model
-import Anisotropic.Density.Ordering
-import Anisotropic.Density.Varrho
+module
+
+public import Anisotropic.Framework.Model
+public import Anisotropic.Density.Ordering
+public import Anisotropic.Density.Varrho
+
+@[expose] public section
 
 open MeasureTheory Polynomial Filter Topology
 open scoped ENNReal

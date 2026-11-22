@@ -1,7 +1,12 @@
-import Anisotropic.Entrywise.DiagModel
-import Anisotropic.LinAlg.Spectral
-import Anisotropic.LinAlg.Blocks
-import Anisotropic.Framework.Domination
+module
+
+public import Anisotropic.MainDefs
+public import Anisotropic.Entrywise.DiagModel
+public import Anisotropic.LinAlg.Spectral
+public import Anisotropic.LinAlg.Blocks
+public import Anisotropic.Framework.Domination
+
+@[expose] public section
 
 /-!
 # `(1+xm)` on a set, `Π`, `Ψ`, `m_N`, the weighted entries and Definition 3.20
@@ -25,11 +30,6 @@ variable {M : ℕ}
 /-- (1+xm) on `S` with constant `c`. -/
 def OneXmOn (c : ℝ) (N : ℕ) (σ : Fin M → ℝ) (S : Set ℂ) : Prop :=
   ∀ z ∈ S, ∀ i, c ≤ ‖1 + (σ i : ℂ) * mFun N σ z‖
-
-/-- (def_Pi) for a general `Σ`, at a given value `w` of `m`. -/
-def piMat {N : ℕ} (Sig : Matrix (Fin M) (Fin M) ℝ) (w : ℂ) :
-    Matrix (Fin M ⊕ Fin N) (Fin M ⊕ Fin N) ℂ :=
-  fromBlocks (-(cplx Sig * (1 + w • cplx Sig)⁻¹)) 0 0 (w • 1)
 
 /-- (def_Pi) for `Σ = diag(σ)`: `Π = diag(m_1, …, m_M, m, …, m)`. -/
 def PiDiag (N : ℕ) (σ : Fin M → ℝ) (z : ℂ) : Matrix (Fin M ⊕ Fin N) (Fin M ⊕ Fin N) ℂ :=
@@ -75,14 +75,6 @@ theorem piMat_diagonal {N : ℕ} {σ : Fin M → ℝ} (hσ : ∀ i, 0 ≤ σ i) 
   funext i
   have := hne i
   field_simp
-
-/-- (def_Psi). -/
-def Psi (N : ℕ) (σ : Fin M → ℝ) (z : ℂ) : ℝ :=
-  √((mFun N σ z).im / (N * z.im)) + 1 / (N * z.im)
-
-/-- (def_m_N), through the `𝓘_N × 𝓘_N` block of `G` ((G_N_ident)). -/
-def mN {N : ℕ} (Sig : Matrix (Fin M) (Fin M) ℝ) (Xm : Matrix (Fin M) (Fin N) ℝ) (z : ℂ) : ℂ :=
-  (N : ℂ)⁻¹ * ∑ μ, G Sig Xm z (Sum.inr μ) (Sum.inr μ)
 
 theorem mN_eq_trace_GN {N : ℕ} {Sig : Matrix (Fin M) (Fin M) ℝ} (hSig : Sig.PosDef)
     (Xm : Matrix (Fin M) (Fin N) ℝ) {z : ℂ} (hz : 0 < z.im) :
@@ -165,11 +157,6 @@ theorem wEnt_eq {N : ℕ} {σ : Fin M → ℝ} (hσ : ∀ i, 0 < σ i)
   unfold wEnt
   field_simp
 
-/-- `Σ̲⁻¹ (G − Π) Σ̲⁻¹`, with `m` of the eigenvalues of `Σ`. -/
-def lawMat {N : ℕ} (Sig : Matrix (Fin M) (Fin M) ℝ) (Xm : Matrix (Fin M) (Fin N) ℝ) (z : ℂ) :
-    Matrix (Fin M ⊕ Fin N) (Fin M ⊕ Fin N) ℂ :=
-  (ulSigma N Sig)⁻¹ * (G Sig Xm z - piMat Sig (mFun N (specOf Sig) z)) * (ulSigma N Sig)⁻¹
-
 section Laws
 
 variable {Ω : Type*} [MeasureSpace Ω]
@@ -179,17 +166,6 @@ def EntrywiseLawAt (N : ℕ) (ε D : ℝ) (Sig : Matrix (Fin M) (Fin M) ℝ)
     (X : Ω → Matrix (Fin M) (Fin N) ℝ) (S : Set ℂ) : Prop :=
   ∀ z ∈ S, ∀ s t, ODomAt N ε D (fun ω => lawMat Sig (X ω) z s t)
     (fun _ => Psi N (specOf Sig) z)
-
-/-- Definition 3.20 (ii) at fixed `N, ε, D`: (isotropic law) on `S`. -/
-def AnisotropicLawAt (N : ℕ) (ε D : ℝ) (Sig : Matrix (Fin M) (Fin M) ℝ)
-    (X : Ω → Matrix (Fin M) (Fin N) ℝ) (S : Set ℂ) : Prop :=
-  ∀ z ∈ S, ODomMatAt N ε D (fun ω => lawMat Sig (X ω) z) (fun _ => Psi N (specOf Sig) z)
-
-/-- Definition 3.20 (iii) at fixed `N, ε, D`: the averaged law on `S`. -/
-def AveragedLawAt (N : ℕ) (ε D : ℝ) (Sig : Matrix (Fin M) (Fin M) ℝ)
-    (X : Ω → Matrix (Fin M) (Fin N) ℝ) (S : Set ℂ) : Prop :=
-  ∀ z ∈ S, ODomAt N ε D (fun ω => mN Sig (X ω) z - mFun N (specOf Sig) z)
-    (fun _ => 1 / (N * z.im))
 
 /-- Definition 3.20 (i) for `Σ = diag(σ)`, entrywise in `σ`. -/
 def EntrywiseLawDiagAt (N : ℕ) (ε D : ℝ) (σ : Fin M → ℝ) (X : Ω → Matrix (Fin M) (Fin N) ℝ)

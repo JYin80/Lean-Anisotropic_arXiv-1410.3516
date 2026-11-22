@@ -1,4 +1,8 @@
-import Anisotropic.LinAlg.ResolventId
+module
+
+public import Anisotropic.LinAlg.ResolventId
+
+@[expose] public section
 
 open Matrix ComplexOrder
 set_option linter.unusedSectionVars false

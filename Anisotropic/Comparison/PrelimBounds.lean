@@ -1,9 +1,13 @@
-import Anisotropic.Comparison.TaggedWords
-import Anisotropic.Comparison.RoughBound
-import Anisotropic.Probability.LDE.Conditional
-import Anisotropic.Probability.NormBound.Main
-import Anisotropic.LinAlg.ResolventId
-import Anisotropic.Framework.DominationUnion
+module
+
+public import Anisotropic.Comparison.TaggedWords
+public import Anisotropic.Comparison.RoughBound
+public import Anisotropic.Probability.LDE.Conditional
+public import Anisotropic.Probability.NormBound.Main
+public import Anisotropic.LinAlg.ResolventId
+public import Anisotropic.Framework.DominationUnion
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

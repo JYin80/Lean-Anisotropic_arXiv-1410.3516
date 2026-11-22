@@ -1,6 +1,10 @@
-import Anisotropic.Comparison.Notation
-import Anisotropic.LinAlg.Expansion
-import Anisotropic.LinAlg.OpBound
+module
+
+public import Anisotropic.Comparison.Notation
+public import Anisotropic.LinAlg.Expansion
+public import Anisotropic.LinAlg.OpBound
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

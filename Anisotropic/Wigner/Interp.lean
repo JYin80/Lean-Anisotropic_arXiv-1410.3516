@@ -1,7 +1,11 @@
-import Anisotropic.Comparison.Interpolation
-import Anisotropic.Framework.Domination
-import Anisotropic.Wigner.GOE
-import Anisotropic.Wigner.Model
+module
+
+public import Anisotropic.Comparison.Interpolation
+public import Anisotropic.Framework.Domination
+public import Anisotropic.Wigner.GOE
+public import Anisotropic.Wigner.Model
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

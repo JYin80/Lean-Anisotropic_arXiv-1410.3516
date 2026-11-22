@@ -1,0 +1,23 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "Anisotropic.thm_3_6",
+    "Anisotropic.thm_3_7",
+    "Anisotropic.cor_3_9",
+    "Anisotropic.thm_3_12",
+    "Anisotropic.thm_3_18",
+    "Anisotropic.prop_11_1",
+    "Anisotropic.thm_12_2_aniso",
+    "Anisotropic.thm_12_2_avg",
+    "Anisotropic.thm_12_4",
+    "Anisotropic.thm_12_5"
+  ],
+  "definition_names": [],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

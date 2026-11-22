@@ -1,9 +1,13 @@
-import Anisotropic.Entrywise.Control
-import Anisotropic.Entrywise.Indep
-import Anisotropic.Probability.LDE.Conditional
-import Anisotropic.Probability.NormBound.Main
-import Anisotropic.LinAlg.Ward
-import Anisotropic.LinAlg.OpBound
+module
+
+public import Anisotropic.Entrywise.Control
+public import Anisotropic.Entrywise.Indep
+public import Anisotropic.Probability.LDE.Conditional
+public import Anisotropic.Probability.NormBound.Main
+public import Anisotropic.LinAlg.Ward
+public import Anisotropic.LinAlg.OpBound
+
+@[expose] public section
 
 /-! # Lemma 5.2: the entrywise large deviation steps for `Σ = diag(σ)`
 

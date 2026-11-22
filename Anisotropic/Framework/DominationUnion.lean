@@ -1,4 +1,8 @@
-import Anisotropic.Framework.Domination
+module
+
+public import Anisotropic.Framework.Domination
+
+@[expose] public section
 
 /-! ## Unions over at most `N^C` indices
 

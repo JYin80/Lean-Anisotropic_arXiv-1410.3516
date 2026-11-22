@@ -1,13 +1,17 @@
-import Anisotropic.EdgeUniv.SmCount
-import Anisotropic.Entrywise.DiagModel
-import Anisotropic.Framework.Domination
-import Anisotropic.Framework.DominationUnion
-import Anisotropic.Framework.Model
-import Anisotropic.Wigner.Defs
-import Anisotropic.Wigner.EdgeDefs
-import Anisotropic.Wigner.EdgeLocal
-import Anisotropic.Wigner.EdgeSqrt
-import Anisotropic.Wigner.Model
+module
+
+public import Anisotropic.EdgeUniv.SmCount
+public import Anisotropic.Entrywise.DiagModel
+public import Anisotropic.Framework.Domination
+public import Anisotropic.Framework.DominationUnion
+public import Anisotropic.Framework.Model
+public import Anisotropic.Wigner.Defs
+public import Anisotropic.Wigner.EdgeDefs
+public import Anisotropic.Wigner.EdgeLocal
+public import Anisotropic.Wigner.EdgeSqrt
+public import Anisotropic.Wigner.Model
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator
@@ -185,6 +189,7 @@ private lemma aux_rpow_three_halves {t : ℝ} (ht : 0 ≤ t) : t ^ (3 / 2 : ℝ)
   rw [show (3 / 2 : ℝ) = 1 + 1 / 2 by norm_num, Real.rpow_add' ht (by norm_num), Real.rpow_one,
     Real.sqrt_eq_rpow]
 
+set_option maxHeartbeats 1000000 in
 /-- The arithmetic of the two-point lower count at `E = L₊ - s/2`, `η₁ = s/(2κ)`,
 `s = (q u²)²`, `N q³ = 1`, `κ = 16 K²`: from `Im m^W(E + iη₁) ≥ K⁻¹ √(s/2 + η₁)`,
 `Im m^W(E + iκη₁) ≤ K √(s/2 + κη₁)` and the two averaged errors `u² B/(N η)`, the left side of

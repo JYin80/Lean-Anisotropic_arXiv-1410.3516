@@ -1,4 +1,8 @@
-import Anisotropic.Density.SelfConsistent
+module
+
+public import Anisotropic.Density.SelfConsistent
+
+@[expose] public section
 
 /-!
 # Asymptotics of `m` and Lemma 4.10

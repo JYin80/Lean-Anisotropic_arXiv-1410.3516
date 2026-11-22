@@ -1,26 +1,30 @@
-import Anisotropic.Comparison.Ladder
-import Anisotropic.Comparison.Notation
-import Anisotropic.Comparison.Words
-import Anisotropic.Density.Basic
-import Anisotropic.Density.GenProp
-import Anisotropic.Density.SelfConsistent
-import Anisotropic.Density.Stability.Defs
-import Anisotropic.Density.Stability.Domains
-import Anisotropic.Entrywise.Defs
-import Anisotropic.Entrywise.DiagModel
-import Anisotropic.Entrywise.Main
-import Anisotropic.Framework.Domination
-import Anisotropic.Framework.DominationUnion
-import Anisotropic.Framework.Model
-import Anisotropic.Gaussian.Invariance
-import Anisotropic.Gaussian.Main
-import Anisotropic.Gaussian.Measurable
-import Anisotropic.Gaussian.RotationLaw
-import Anisotropic.Gaussian.Spectral
-import Anisotropic.LinAlg.Basic
-import Anisotropic.LinAlg.Minor
-import Anisotropic.LinAlg.ResolventId
-import Anisotropic.Probability.NormBound.GaussianLower
+module
+
+public import Anisotropic.Comparison.Ladder
+public import Anisotropic.Comparison.Notation
+public import Anisotropic.Comparison.Words
+public import Anisotropic.Density.Basic
+public import Anisotropic.Density.GenProp
+public import Anisotropic.Density.SelfConsistent
+public import Anisotropic.Density.Stability.Defs
+public import Anisotropic.Density.Stability.Domains
+public import Anisotropic.Entrywise.Defs
+public import Anisotropic.Entrywise.DiagModel
+public import Anisotropic.Entrywise.Main
+public import Anisotropic.Framework.Domination
+public import Anisotropic.Framework.DominationUnion
+public import Anisotropic.Framework.Model
+public import Anisotropic.Gaussian.Invariance
+public import Anisotropic.Gaussian.Main
+public import Anisotropic.Gaussian.Measurable
+public import Anisotropic.Gaussian.RotationLaw
+public import Anisotropic.Gaussian.Spectral
+public import Anisotropic.LinAlg.Basic
+public import Anisotropic.LinAlg.Minor
+public import Anisotropic.LinAlg.ResolventId
+public import Anisotropic.Probability.NormBound.GaussianLower
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

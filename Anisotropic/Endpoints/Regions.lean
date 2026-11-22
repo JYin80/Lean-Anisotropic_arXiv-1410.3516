@@ -1,14 +1,18 @@
-import Anisotropic.Averaged.Defs
-import Anisotropic.Density.Basic
-import Anisotropic.Density.Critical
-import Anisotropic.Density.GenProp
-import Anisotropic.Density.Stability.Defs
-import Anisotropic.Density.Stability.Domains
-import Anisotropic.Density.Stability.EdgeTools
-import Anisotropic.Density.Structure
-import Anisotropic.Density.Varrho
-import Anisotropic.Entrywise.Defs
-import Anisotropic.Framework.Model
+module
+
+public import Anisotropic.Averaged.Defs
+public import Anisotropic.Density.Basic
+public import Anisotropic.Density.Critical
+public import Anisotropic.Density.GenProp
+public import Anisotropic.Density.Stability.Defs
+public import Anisotropic.Density.Stability.Domains
+public import Anisotropic.Density.Stability.EdgeTools
+public import Anisotropic.Density.Structure
+public import Anisotropic.Density.Varrho
+public import Anisotropic.Entrywise.Defs
+public import Anisotropic.Framework.Model
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

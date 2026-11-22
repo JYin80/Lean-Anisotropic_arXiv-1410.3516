@@ -1,4 +1,8 @@
-import Anisotropic.Density.Stability.EdgeTools
+module
+
+public import Anisotropic.Density.Stability.EdgeTools
+
+@[expose] public section
 
 /-!
 # (z-a_taylor) and the density near a regular edge

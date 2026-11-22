@@ -1,7 +1,11 @@
-import Anisotropic.Gaussian.Lemma62
-import Anisotropic.Gaussian.Ensemble
-import Anisotropic.Entrywise.Main
-import Anisotropic.Density.Stability.Defs
+module
+
+public import Anisotropic.Gaussian.Lemma62
+public import Anisotropic.Gaussian.Ensemble
+public import Anisotropic.Entrywise.Main
+public import Anisotropic.Density.Stability.Defs
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

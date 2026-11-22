@@ -1,5 +1,9 @@
-import Anisotropic.Comparison.CountII
-import Anisotropic.Comparison.SelfConsistent
+module
+
+public import Anisotropic.Comparison.CountII
+public import Anisotropic.Comparison.SelfConsistent
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

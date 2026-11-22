@@ -1,5 +1,9 @@
-import Anisotropic.Probability.NormBound.GaussianLower
-import Anisotropic.Framework.Model
+module
+
+public import Anisotropic.Probability.NormBound.GaussianLower
+public import Anisotropic.Framework.Model
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

@@ -1,10 +1,14 @@
-import Anisotropic.EdgeUniv.Defs
-import Anisotropic.EdgeUniv.Eigen
-import Anisotropic.Entrywise.DiagModel
-import Anisotropic.Framework.Domination
-import Anisotropic.Gaussian.Invariance
-import Anisotropic.GeneralT.Spectra
-import Anisotropic.Probability.NormBound.GaussianLower
+module
+
+public import Anisotropic.EdgeUniv.Defs
+public import Anisotropic.EdgeUniv.Eigen
+public import Anisotropic.Entrywise.DiagModel
+public import Anisotropic.Framework.Domination
+public import Anisotropic.Gaussian.Invariance
+public import Anisotropic.GeneralT.Spectra
+public import Anisotropic.Probability.NormBound.GaussianLower
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

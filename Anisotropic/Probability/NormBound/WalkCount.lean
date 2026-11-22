@@ -1,4 +1,8 @@
-import Anisotropic.Probability.NormBound.Walks
+module
+
+public import Anisotropic.Probability.NormBound.Walks
+
+@[expose] public section
 
 /-!
 # Even closed walks with a given number of vertices

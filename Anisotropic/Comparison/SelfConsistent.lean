@@ -1,5 +1,9 @@
-import Anisotropic.Comparison.WordBounds
-import Anisotropic.Comparison.Taylor
+module
+
+public import Anisotropic.Comparison.WordBounds
+public import Anisotropic.Comparison.Taylor
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

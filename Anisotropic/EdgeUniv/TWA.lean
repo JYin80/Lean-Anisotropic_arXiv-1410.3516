@@ -1,12 +1,16 @@
-import Anisotropic.Density.Count
-import Anisotropic.EdgeUniv.Defs
-import Anisotropic.EdgeUniv.GOEEdge
-import Anisotropic.EdgeUniv.Main
-import Anisotropic.Entrywise.DiagModel
-import Anisotropic.Framework.Domination
-import Anisotropic.Framework.Model
-import Anisotropic.Instances.MarchenkoPastur
-import Anisotropic.Instances.Models
+module
+
+public import Anisotropic.Density.Count
+public import Anisotropic.EdgeUniv.Defs
+public import Anisotropic.EdgeUniv.GOEEdge
+public import Anisotropic.EdgeUniv.Main
+public import Anisotropic.Entrywise.DiagModel
+public import Anisotropic.Framework.Domination
+public import Anisotropic.Framework.Model
+public import Anisotropic.Instances.MarchenkoPastur
+public import Anisotropic.Instances.Models
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

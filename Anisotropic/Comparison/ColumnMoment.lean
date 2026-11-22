@@ -1,5 +1,9 @@
-import Anisotropic.Comparison.DegreeCount
-import Anisotropic.Comparison.PrelimBounds
+module
+
+public import Anisotropic.Comparison.DegreeCount
+public import Anisotropic.Comparison.PrelimBounds
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

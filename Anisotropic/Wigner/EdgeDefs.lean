@@ -1,8 +1,13 @@
-import Anisotropic.Framework.Domination
-import Anisotropic.Rigidity.Defs
-import Anisotropic.Rigidity.Exclusion
-import Anisotropic.Wigner.SelfConsistent
-import Anisotropic.Wigner.SelfConsistentII
+module
+
+public import Anisotropic.MainDefs
+public import Anisotropic.Framework.Domination
+public import Anisotropic.Rigidity.Defs
+public import Anisotropic.Rigidity.Exclusion
+public import Anisotropic.Wigner.SelfConsistent
+public import Anisotropic.Wigner.SelfConsistentII
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator
@@ -13,25 +18,6 @@ open Classical
 namespace Anisotropic
 
 /-! # The extreme edges `L±` of `ϱ^W` through `g(x) = x − m_A(x)`, Definition 12.3 (rigid extremes), and the partial-fraction identity (tur1) -/
-
-/-- `S(x) = N⁻¹ ∑ᵢ (aᵢ − x)⁻²` on the real axis. -/
-def sW {N : ℕ} (a : Fin N → ℝ) (x : ℝ) : ℝ := (N : ℝ)⁻¹ * ∑ i, ((a i - x) ^ 2)⁻¹
-
-/-- `g(x) = x − m_A(x)` with `m_A(x) = N⁻¹ ∑ᵢ (aᵢ − x)⁻¹`, on the real axis; `z = g(z + m^W(z))`
-is the self-consistent equation of §12.1. -/
-def gW {N : ℕ} (a : Fin N → ℝ) (x : ℝ) : ℝ := x - (N : ℝ)⁻¹ * ∑ i, (a i - x)⁻¹
-
-/-- The critical point `x₊ > maxᵢ aᵢ` of `g`: the least `x > maxᵢ aᵢ` with `S(x) ≤ 1`. -/
-def xpW {N : ℕ} (a : Fin N → ℝ) : ℝ := sInf {x | (⨆ i, a i) < x ∧ sW a x ≤ 1}
-
-/-- The critical point `x₋ < minᵢ aᵢ` of `g`: the greatest `x < minᵢ aᵢ` with `S(x) ≤ 1`. -/
-def xmW {N : ℕ} (a : Fin N → ℝ) : ℝ := sSup {x | x < (⨅ i, a i) ∧ sW a x ≤ 1}
-
-/-- The right edge `L₊ = g(x₊)` of `ϱ^W` (§12.1, Definition 12.3). -/
-def LpW {N : ℕ} (a : Fin N → ℝ) : ℝ := gW a (xpW a)
-
-/-- The left edge `L₋ = g(x₋)` of `ϱ^W` (§12.1, Definition 12.3). -/
-def LmW {N : ℕ} (a : Fin N → ℝ) : ℝ := gW a (xmW a)
 
 /-- `κ(E) = dist(E, [L₋, L₊])` (§12.4). -/
 def kappaW {N : ℕ} (a : Fin N → ℝ) (E : ℝ) : ℝ := max (max (E - LpW a) (LmW a - E)) 0
@@ -45,17 +31,6 @@ def outDomW {N : ℕ} (τS : ℝ) (a : Fin N → ℝ) : Set ℂ :=
 section Rigid
 
 variable {Ω : Type*} [MeasureSpace Ω]
-
-/-- `[λ₁(H) − Lp]₊ ≺ N^{−2/3}` and `[λ_N(H) − Lm]₋ ≺ N^{−2/3}` at fixed `N, ε, D`. -/
-def RigidExtremesAt (N : ℕ) (ε D Lm Lp : ℝ) (H : Ω → Matrix (Fin N) (Fin N) ℝ) : Prop :=
-  DomAt N ε D (fun ω => max (sortedEig (H ω) 1 - Lp) 0) (fun _ => (N : ℝ) ^ (-2 / 3 : ℝ)) ∧
-    DomAt N ε D (fun ω => max (Lm - sortedEig (H ω) N) 0) (fun _ => (N : ℝ) ^ (-2 / 3 : ℝ))
-
-/-- Definition 12.3 at fixed `N, ε, D`: the extreme eigenvalues of `H` are rigid with respect to
-the edges `L±` of the density `ϱ^W` of the spectrum `a`. -/
-def RigidExtremesWAt (N : ℕ) (ε D : ℝ) (a : Fin N → ℝ) (H : Ω → Matrix (Fin N) (Fin N) ℝ) :
-    Prop :=
-  RigidExtremesAt N ε D (LmW a) (LpW a) H
 
 end Rigid
 

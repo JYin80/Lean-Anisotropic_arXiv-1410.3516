@@ -1,17 +1,21 @@
-import Anisotropic.Density.Count
-import Anisotropic.Density.Critical
-import Anisotropic.Entrywise.DiagModel
-import Anisotropic.Framework.Domination
-import Anisotropic.Framework.Model
-import Anisotropic.GeneralT.Edges
-import Anisotropic.GeneralT.Model
-import Anisotropic.GeneralT.Rigidity
-import Anisotropic.Instances.MarchenkoPasturTwo
-import Anisotropic.Instances.Models
-import Anisotropic.Probability.NormBound.GaussianLower
-import Anisotropic.Qdot.Defs
-import Anisotropic.Qdot.RigidityLocal
-import Anisotropic.Rigidity.Defs
+module
+
+public import Anisotropic.Density.Count
+public import Anisotropic.Density.Critical
+public import Anisotropic.Entrywise.DiagModel
+public import Anisotropic.Framework.Domination
+public import Anisotropic.Framework.Model
+public import Anisotropic.GeneralT.Edges
+public import Anisotropic.GeneralT.Model
+public import Anisotropic.GeneralT.Rigidity
+public import Anisotropic.Instances.MarchenkoPasturTwo
+public import Anisotropic.Instances.Models
+public import Anisotropic.Probability.NormBound.GaussianLower
+public import Anisotropic.Qdot.Defs
+public import Anisotropic.Qdot.RigidityLocal
+public import Anisotropic.Rigidity.Defs
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

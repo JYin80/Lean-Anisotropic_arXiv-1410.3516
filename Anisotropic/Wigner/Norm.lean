@@ -1,9 +1,13 @@
-import Anisotropic.Framework.Domination
-import Anisotropic.Probability.NormBound.GaussianLower
-import Anisotropic.Probability.NormBound.TraceMoment
-import Anisotropic.Wigner.GOE
-import Anisotropic.Wigner.Model
-import Anisotropic.Wigner.NormTrunc
+module
+
+public import Anisotropic.Framework.Domination
+public import Anisotropic.Probability.NormBound.GaussianLower
+public import Anisotropic.Probability.NormBound.TraceMoment
+public import Anisotropic.Wigner.GOE
+public import Anisotropic.Wigner.Model
+public import Anisotropic.Wigner.NormTrunc
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

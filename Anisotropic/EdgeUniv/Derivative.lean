@@ -1,10 +1,14 @@
-import Anisotropic.EdgeUniv.SmCount
-import Anisotropic.Entrywise.Defs
-import Anisotropic.Framework.Domination
-import Anisotropic.LinAlg.Basic
-import Anisotropic.LinAlg.Expansion
-import Anisotropic.LinAlg.ResolventId
-import Anisotropic.Rigidity.Defs
+module
+
+public import Anisotropic.EdgeUniv.SmCount
+public import Anisotropic.Entrywise.Defs
+public import Anisotropic.Framework.Domination
+public import Anisotropic.LinAlg.Basic
+public import Anisotropic.LinAlg.Expansion
+public import Anisotropic.LinAlg.ResolventId
+public import Anisotropic.Rigidity.Defs
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

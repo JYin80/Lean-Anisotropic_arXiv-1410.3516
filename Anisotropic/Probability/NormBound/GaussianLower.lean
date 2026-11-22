@@ -1,5 +1,10 @@
-import Anisotropic.Probability.NormBound.Main
-import Anisotropic.Probability.Geometry.SphereNet
+module
+
+public import Anisotropic.MainDefs
+public import Anisotropic.Probability.NormBound.Main
+public import Anisotropic.Probability.Geometry.SphereNet
+
+@[expose] public section
 
 /-!
 # Gaussian ensembles and the lower bound `c ≤ E₁₁` of Lemma 10.4
@@ -436,21 +441,10 @@ end R04
 
 /-! ## A concrete Gaussian ensemble -/
 
-/-- The sample space `Fin K × Fin N → ℝ` of a Gaussian `K × N` matrix. -/
-def GaussSpace (K N : ℕ) : Type := Fin K × Fin N → ℝ
-
-instance (K N : ℕ) : MeasurableSpace (GaussSpace K N) := MeasurableSpace.pi
-
-/-- The product of `N(0, 1/N)` laws on `GaussSpace K N`. -/
-instance (K N : ℕ) : MeasureSpace (GaussSpace K N) :=
-  ⟨Measure.pi fun _ : Fin K × Fin N => gaussianReal 0 (N : ℝ≥0)⁻¹⟩
 
 instance (K N : ℕ) : IsProbabilityMeasure (ℙ : Measure (GaussSpace K N)) :=
   inferInstanceAs
     (IsProbabilityMeasure (Measure.pi fun _ : Fin K × Fin N => gaussianReal 0 (N : ℝ≥0)⁻¹))
-
-/-- The coordinate matrix `X_{iμ}(ω) = ω (i, μ)` on `GaussSpace K N`. -/
-def gaussX (K N : ℕ) : GaussSpace K N → Matrix (Fin K) (Fin N) ℝ := fun ω i μ => ω (i, μ)
 
 /-- The coordinate matrix on `GaussSpace K N` has independent `N(0, 1/N)` entries. -/
 theorem gaussX_isGaussianEnsemble (K N : ℕ) : IsGaussianEnsemble (gaussX K N) where

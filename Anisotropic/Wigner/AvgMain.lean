@@ -1,11 +1,15 @@
-import Anisotropic.Averaged.Main
-import Anisotropic.Entrywise.DiagModel
-import Anisotropic.Framework.Domination
-import Anisotropic.Wigner.AvgWords
-import Anisotropic.Wigner.Defs
-import Anisotropic.Wigner.Main
-import Anisotropic.Wigner.Model
-import Anisotropic.Wigner.SelfConsistentII
+module
+
+public import Anisotropic.Averaged.Main
+public import Anisotropic.Entrywise.DiagModel
+public import Anisotropic.Framework.Domination
+public import Anisotropic.Wigner.AvgWords
+public import Anisotropic.Wigner.Defs
+public import Anisotropic.Wigner.Main
+public import Anisotropic.Wigner.Model
+public import Anisotropic.Wigner.SelfConsistentII
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

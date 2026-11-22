@@ -1,9 +1,13 @@
-import Anisotropic.Comparison.Ensemble
-import Anisotropic.Comparison.Notation
-import Anisotropic.Comparison.Ladder
-import Anisotropic.Framework.DominationMoment
-import Anisotropic.LinAlg.OpBound
-import Anisotropic.Gaussian.Spectral
+module
+
+public import Anisotropic.Comparison.Ensemble
+public import Anisotropic.Comparison.Notation
+public import Anisotropic.Comparison.Ladder
+public import Anisotropic.Framework.DominationMoment
+public import Anisotropic.LinAlg.OpBound
+public import Anisotropic.Gaussian.Spectral
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

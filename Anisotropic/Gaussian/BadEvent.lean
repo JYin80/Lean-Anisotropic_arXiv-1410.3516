@@ -1,9 +1,13 @@
-import Anisotropic.Gaussian.Measurable
-import Anisotropic.Entrywise.Control
-import Anisotropic.Probability.NormBound.GaussianLower
-import Anisotropic.LinAlg.Spectral
-import Anisotropic.LinAlg.Blocks
-import Anisotropic.Framework.DominationUnion
+module
+
+public import Anisotropic.Gaussian.Measurable
+public import Anisotropic.Entrywise.Control
+public import Anisotropic.Probability.NormBound.GaussianLower
+public import Anisotropic.LinAlg.Spectral
+public import Anisotropic.LinAlg.Blocks
+public import Anisotropic.Framework.DominationUnion
+
+@[expose] public section
 
 /-!
 # Deterministic bounds, Gaussian moments and the bad event (Lemma 6.2, `Σ = diag(σ)`)

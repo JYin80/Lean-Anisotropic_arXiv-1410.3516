@@ -1,10 +1,14 @@
-import Anisotropic.Entrywise.DiagModel
-import Anisotropic.Framework.Domination
-import Anisotropic.Wigner.Defs
-import Anisotropic.Wigner.EdgeDefs
-import Anisotropic.Wigner.EdgeGap
-import Anisotropic.Wigner.Model
-import Anisotropic.Wigner.SelfConsistent
+module
+
+public import Anisotropic.Entrywise.DiagModel
+public import Anisotropic.Framework.Domination
+public import Anisotropic.Wigner.Defs
+public import Anisotropic.Wigner.EdgeDefs
+public import Anisotropic.Wigner.EdgeGap
+public import Anisotropic.Wigner.Model
+public import Anisotropic.Wigner.SelfConsistent
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

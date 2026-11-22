@@ -1,4 +1,8 @@
-import Anisotropic.Density.Critical
+module
+
+public import Anisotropic.Density.Critical
+
+@[expose] public section
 
 /-!
 # Ordering of the critical values

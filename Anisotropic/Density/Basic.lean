@@ -1,4 +1,9 @@
-import Mathlib
+module
+
+public import Anisotropic.MainDefs
+public import Mathlib
+
+@[expose] public section
 
 open MeasureTheory Polynomial Filter Topology
 open scoped ENNReal
@@ -19,29 +24,6 @@ def phiRatio (M N : ℕ) : ℝ := (M : ℝ) / N
 def empMeasure (σ : Fin M → ℝ) : Measure ℝ :=
   ((M : ℝ≥0∞)⁻¹) • ∑ i, Measure.dirac (σ i)
 
-/-- The distinct nonzero values `s_1 > ⋯ > s_n` of `σ` (as a finset, for `σ ≥ 0`). -/
-def posVals (σ : Fin M → ℝ) : Finset ℝ :=
-  (Finset.univ.image σ).filter (fun s => 0 < s)
-
-/-- The weight `r_s = φ π({s}) = #{i | σ i = s} / N` (Appendix A). -/
-def weight (N : ℕ) (σ : Fin M → ℝ) (s : ℝ) : ℝ :=
-  ((Finset.univ.filter fun i => σ i = s).card : ℝ) / N
-
-/-- `R = φ π((0,∞)) = #{i | 0 < σ i} / N`. -/
-def massRatio (N : ℕ) (σ : Fin M → ℝ) : ℝ :=
-  ((Finset.univ.filter fun i => 0 < σ i).card : ℝ) / N
-
-/-- The upper half-plane `ℂ₊` as a set. -/
-def upperHalf : Set ℂ := {z | 0 < z.im}
-
-/-- The function `f` of (def_fx), `f(w) = -1/w + N⁻¹ Σ_i σ_i / (1 + σ_i w)`. -/
-def fC (N : ℕ) (σ : Fin M → ℝ) (w : ℂ) : ℂ :=
-  -w⁻¹ + ∑ i, (σ i : ℂ) / (N * (1 + σ i * w))
-
-/-- The restriction of `f` to the real line. -/
-def fR (N : ℕ) (σ : Fin M → ℝ) (x : ℝ) : ℝ :=
-  -x⁻¹ + ∑ i, σ i / (N * (1 + σ i * x))
-
 /-- `f'` on `ℂ`, (f_der). -/
 def fCDeriv (N : ℕ) (σ : Fin M → ℝ) (w : ℂ) : ℂ :=
   (w ^ 2)⁻¹ - ∑ i, (σ i : ℂ) ^ 2 / (N * (1 + σ i * w) ^ 2)
@@ -49,10 +31,6 @@ def fCDeriv (N : ℕ) (σ : Fin M → ℝ) (w : ℂ) : ℂ :=
 /-- `f'` on `ℝ`, (f_der). -/
 def fR1 (N : ℕ) (σ : Fin M → ℝ) (x : ℝ) : ℝ :=
   (x ^ 2)⁻¹ - ∑ i, σ i ^ 2 / (N * (1 + σ i * x) ^ 2)
-
-/-- `f''` on `ℝ`, (f_der). -/
-def fR2 (N : ℕ) (σ : Fin M → ℝ) (x : ℝ) : ℝ :=
-  -2 * (x ^ 3)⁻¹ + 2 * ∑ i, σ i ^ 3 / (N * (1 + σ i * x) ^ 3)
 
 /-- The polynomial `P_z(w) = w Π_s (1 + s w) (f(w) - z)` of degree `n + 1` (Appendix A.1). -/
 def scPoly (N : ℕ) (σ : Fin M → ℝ) (z : ℂ) : ℂ[X] :=
@@ -147,6 +125,5 @@ example : (fC 2 (fun _ : Fin 1 => (1 : ℝ)) Complex.I).im = Complex.I.im *
     ((‖Complex.I‖ ^ 2)⁻¹ - ∑ i, (fun _ : Fin 1 => (1 : ℝ)) i ^ 2 /
       (2 * ‖1 + (((fun _ : Fin 1 => (1 : ℝ)) i : ℝ) : ℂ) * Complex.I‖ ^ 2)) :=
   im_fC 2 _ Complex.I
-
 
 end Anisotropic

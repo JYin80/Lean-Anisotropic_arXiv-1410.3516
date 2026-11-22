@@ -1,5 +1,9 @@
-import Anisotropic.Density.Ordering
-import Anisotropic.Density.Varrho
+module
+
+public import Anisotropic.Density.Ordering
+public import Anisotropic.Density.Varrho
+
+@[expose] public section
 
 /-!
 # `x_k = m(a_k)` and the structure of `ϱ`

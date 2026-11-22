@@ -1,9 +1,14 @@
-import Anisotropic.Density.Count
-import Anisotropic.Density.Critical
-import Anisotropic.Density.GenProp
-import Anisotropic.Density.Structure
-import Anisotropic.Density.Varrho
-import Anisotropic.Entrywise.DiagModel
+module
+
+public import Anisotropic.MainDefs
+public import Anisotropic.Density.Count
+public import Anisotropic.Density.Critical
+public import Anisotropic.Density.GenProp
+public import Anisotropic.Density.Structure
+public import Anisotropic.Density.Varrho
+public import Anisotropic.Entrywise.DiagModel
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator
@@ -17,49 +22,13 @@ variable {M N : ℕ}
 
 /-! # Eigenvalues of `Q`, the counting function `eigCount`, sorted eigenvalues, classical locations, `N_k`, the relabelling `λ_{k,i}`, `γ_{k,i}`, the rigidity bound, the window `edgeWin` -/
 
-/-- `Q_N = Xᵀ Σ X` (`N × N`); its nonzero eigenvalues are those of `Q = Σ^{1/2} X Xᵀ Σ^{1/2}`
-(§3.2, before Theorem 3.12). -/
-def QN (Sig : Matrix (Fin M) (Fin M) ℝ) (Xm : Matrix (Fin M) (Fin N) ℝ) :
-    Matrix (Fin N) (Fin N) ℝ :=
-  Xmᵀ * Sig * Xm
-
 /-- The counting function `n_A(E) = #{j : λ_j(A) ≥ E}` of a symmetric matrix. -/
 def eigCount {K : ℕ} (A : Matrix (Fin K) (Fin K) ℝ) (E : ℝ) : ℕ :=
   (Finset.univ.filter fun j => E ≤ specOf A j).card
 
-/-- The eigenvalues in decreasing order, `λ_1 ≥ ⋯ ≥ λ_K` (index from `1`; `0` off range). -/
-def sortedEig {K : ℕ} (A : Matrix (Fin K) (Fin K) ℝ) (i : ℕ) : ℝ :=
-  if h : A.IsHermitian ∧ 1 ≤ i ∧ i ≤ Fintype.card (Fin K) then
-    h.1.eigenvalues₀ ⟨i - 1, by have := h.2.1; have := h.2.2; omega⟩
-  else 0
-
-/-- The classical counting function `n(E) = N ϱ([E, ∞))`. -/
-def nClass (N : ℕ) (σ : Fin M → ℝ) (E : ℝ) : ℝ :=
-  N * (varrho N σ (Set.Ici E)).toReal
-
-/-- The classical locations (def:gamma_alpha): `γ_i = sup {E > 0 : n(E) ≥ i − 1/2}`. -/
-def gammaLoc (N : ℕ) (σ : Fin M → ℝ) (i : ℕ) : ℝ :=
-  sSup {E | 0 < E ∧ (i : ℝ) - 1 / 2 ≤ nClass N σ E}
-
-/-- `d_k = N_1 + ⋯ + N_k` as a natural number (`N_l ∈ ℕ`, Lemma A.1). -/
-def cumCount (N : ℕ) (σ : Fin M → ℝ) (k : ℕ) : ℕ :=
-  ⌊∑ l ∈ Finset.Icc 1 k, bandCount N σ l⌋₊
-
-/-- `N_k` (def_N_k) as a natural number. -/
-def bandNat (N : ℕ) (σ : Fin M → ℝ) (k : ℕ) : ℕ :=
-  ⌊bandCount N σ k⌋₊
-
 /-- The relabelled eigenvalue `λ_{k,i} = λ_{i + d_{k−1}}`. -/
 def lamBand (Sig : Matrix (Fin M) (Fin M) ℝ) (Xm : Matrix (Fin M) (Fin N) ℝ) (k i : ℕ) : ℝ :=
   sortedEig (QN Sig Xm) (cumCount N (specOf Sig) (k - 1) + i)
-
-/-- The relabelled classical location `γ_{k,i} = γ_{i + d_{k−1}}`. -/
-def gammaBand (N : ℕ) (σ : Fin M → ℝ) (k i : ℕ) : ℝ :=
-  gammaLoc N σ (cumCount N σ (k - 1) + i)
-
-/-- The right side of (rigidity) at level `ε`: `N^ε (i ∧ (N_k + 1 − i))^{−1/3} N^{−2/3}`. -/
-def rigBound (N Nk i : ℕ) (ε : ℝ) : ℝ :=
-  (N : ℝ) ^ ε * ((min i (Nk + 1 - i) : ℕ) : ℝ) ^ (-(1 / 3 : ℝ)) * (N : ℝ) ^ (-(2 / 3 : ℝ))
 
 /-- The midpoint `(a_{2k} + a_{2k+1})/2` of the `k`-th gap. -/
 def gapMid (N : ℕ) (σ : Fin M → ℝ) (k : ℕ) : ℝ :=

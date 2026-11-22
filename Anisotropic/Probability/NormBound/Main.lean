@@ -1,5 +1,9 @@
-import Anisotropic.Probability.NormBound.TraceMoment
-import Anisotropic.Probability.NormBound.Truncation
+module
+
+public import Anisotropic.Probability.NormBound.TraceMoment
+public import Anisotropic.Probability.NormBound.Truncation
+
+@[expose] public section
 
 /-!
 # The bound `‖XᵀX‖ ≤ C₀` with high probability

@@ -1,9 +1,13 @@
-import Anisotropic.Density.GenProp
-import Anisotropic.Density.SelfConsistent
-import Anisotropic.Density.Stability.Bulk
-import Anisotropic.Density.Stability.Defs
-import Anisotropic.Density.Stability.Domains
-import Anisotropic.Density.Stability.Quadratic
+module
+
+public import Anisotropic.Density.GenProp
+public import Anisotropic.Density.SelfConsistent
+public import Anisotropic.Density.Stability.Bulk
+public import Anisotropic.Density.Stability.Defs
+public import Anisotropic.Density.Stability.Domains
+public import Anisotropic.Density.Stability.Quadratic
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

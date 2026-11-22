@@ -1,11 +1,15 @@
-import Anisotropic.Comparison.Ladder
-import Anisotropic.Entrywise.DiagModel
-import Anisotropic.Framework.Domination
-import Anisotropic.LinAlg.Basic
-import Anisotropic.Wigner.Defs
-import Anisotropic.Wigner.Model
-import Anisotropic.Wigner.Props
-import Anisotropic.Wigner.SelfConsistentII
+module
+
+public import Anisotropic.Comparison.Ladder
+public import Anisotropic.Entrywise.DiagModel
+public import Anisotropic.Framework.Domination
+public import Anisotropic.LinAlg.Basic
+public import Anisotropic.Wigner.Defs
+public import Anisotropic.Wigner.Model
+public import Anisotropic.Wigner.Props
+public import Anisotropic.Wigner.SelfConsistentII
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator
@@ -616,6 +620,7 @@ private lemma rbw_arith {g g' μ' Ψ Ψ' η η' n pε s c T : ℝ} (hn : 0 < n) 
     _ = pε * pε * (T * Ψ ^ 2) := by ring
 
 /-! ## Lemma 12.6 -/
+set_option maxHeartbeats 1000000 in
 
 /-- Lemma 12.6 (a priori bounds, (a_priori_wig)) from (A_{m−1}). -/
 theorem wig_rough_bound (τ : ℝ) (C : ℕ → ℝ) (C₀ δ εA DA : ℝ) (hτ : 0 < τ) (hτ1 : τ ≤ 1)

@@ -1,4 +1,8 @@
-import Anisotropic.Density.Basic
+module
+
+public import Anisotropic.Density.Basic
+
+@[expose] public section
 
 /-!
 # Derivatives of `f` and the polynomial `P_z`

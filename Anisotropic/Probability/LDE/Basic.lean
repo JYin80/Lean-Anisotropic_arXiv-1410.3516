@@ -1,4 +1,8 @@
-import Anisotropic.Framework.DominationMoment
+module
+
+public import Anisotropic.Framework.DominationMoment
+
+@[expose] public section
 
 /-!
 # Large deviation estimates: assumptions, constants and adapters

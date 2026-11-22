@@ -1,8 +1,12 @@
-import Anisotropic.Comparison.Props
-import Anisotropic.LinAlg.Spectral
-import Anisotropic.Density.Varrho
-import Anisotropic.Framework.DominationUnion
-import Anisotropic.Probability.NormBound.Main
+module
+
+public import Anisotropic.Comparison.Props
+public import Anisotropic.LinAlg.Spectral
+public import Anisotropic.Density.Varrho
+public import Anisotropic.Framework.DominationUnion
+public import Anisotropic.Probability.NormBound.Main
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

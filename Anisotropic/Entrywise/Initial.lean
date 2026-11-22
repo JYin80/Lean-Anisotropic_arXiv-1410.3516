@@ -1,6 +1,10 @@
-import Anisotropic.Entrywise.SelfCons
-import Anisotropic.Density.Stability.Defs
-import Anisotropic.Probability.NormBound.Main
+module
+
+public import Anisotropic.Entrywise.SelfCons
+public import Anisotropic.Density.Stability.Defs
+public import Anisotropic.Probability.NormBound.Main
+
+@[expose] public section
 
 /-! # Lemma 5.5: the initial estimate `Λ ≺ N^{−1/2}` for `η ≥ 1`
 

@@ -1,6 +1,10 @@
-import Anisotropic.Density.Stability.Quadratic
-import Anisotropic.Density.Structure
-import Anisotropic.Density.Count
+module
+
+public import Anisotropic.Density.Stability.Quadratic
+public import Anisotropic.Density.Structure
+public import Anisotropic.Density.Count
+
+@[expose] public section
 
 /-!
 # Lemma A.3: `f` near a regular edge

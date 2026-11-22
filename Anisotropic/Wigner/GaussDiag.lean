@@ -1,9 +1,13 @@
-import Anisotropic.Framework.Domination
-import Anisotropic.Gaussian.Lemma62
-import Anisotropic.Gaussian.Parity
-import Anisotropic.Wigner.Defs
-import Anisotropic.Wigner.GOE
-import Anisotropic.Wigner.Model
+module
+
+public import Anisotropic.Framework.Domination
+public import Anisotropic.Gaussian.Lemma62
+public import Anisotropic.Gaussian.Parity
+public import Anisotropic.Wigner.Defs
+public import Anisotropic.Wigner.GOE
+public import Anisotropic.Wigner.Model
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

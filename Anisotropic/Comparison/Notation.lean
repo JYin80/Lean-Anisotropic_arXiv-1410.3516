@@ -1,6 +1,10 @@
-import Anisotropic.Entrywise.Defs
-import Anisotropic.LinAlg.Expansion
-import Anisotropic.Probability.NormBound.Main
+module
+
+public import Anisotropic.Entrywise.Defs
+public import Anisotropic.LinAlg.Expansion
+public import Anisotropic.Probability.NormBound.Main
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

@@ -1,6 +1,10 @@
-import Anisotropic.Entrywise.Control
-import Anisotropic.LinAlg.ResolventId
-import Anisotropic.LinAlg.ResolventIdDiag
+module
+
+public import Anisotropic.Entrywise.Control
+public import Anisotropic.LinAlg.ResolventId
+public import Anisotropic.LinAlg.ResolventIdDiag
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

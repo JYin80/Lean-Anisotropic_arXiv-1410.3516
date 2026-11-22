@@ -1,5 +1,9 @@
-import Anisotropic.Entrywise.Initial
-import Anisotropic.Entrywise.Lattice
+module
+
+public import Anisotropic.Entrywise.Initial
+public import Anisotropic.Entrywise.Lattice
+
+@[expose] public section
 
 /-! # Proposition 5.1: the weak entrywise law `Λ ≺ (Nη)^{−1/4}`
 

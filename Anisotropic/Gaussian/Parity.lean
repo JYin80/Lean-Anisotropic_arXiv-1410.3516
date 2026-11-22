@@ -1,7 +1,11 @@
-import Anisotropic.Gaussian.RotationLaw
-import Anisotropic.Gaussian.Invariance
-import Anisotropic.Gaussian.Measurable
-import Anisotropic.Entrywise.Control
+module
+
+public import Anisotropic.Gaussian.RotationLaw
+public import Anisotropic.Gaussian.Invariance
+public import Anisotropic.Gaussian.Measurable
+public import Anisotropic.Entrywise.Control
+
+@[expose] public section
 
 /-!
 # The parity argument for the off-diagonal part

@@ -1,6 +1,10 @@
-import Anisotropic.Framework.Domination
-import Anisotropic.Probability.NormBound.GaussianLower
-import Anisotropic.Wigner.Model
+module
+
+public import Anisotropic.Framework.Domination
+public import Anisotropic.Probability.NormBound.GaussianLower
+public import Anisotropic.Wigner.Model
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

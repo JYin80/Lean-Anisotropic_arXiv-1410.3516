@@ -1,14 +1,18 @@
-import Anisotropic.Density.Varrho
-import Anisotropic.Entrywise.DiagModel
-import Anisotropic.Framework.Domination
-import Anisotropic.Framework.Model
-import Anisotropic.Gaussian.Invariance
-import Anisotropic.Gaussian.RotationLaw
-import Anisotropic.Probability.NormBound.GaussianLower
-import Anisotropic.Probability.NormBound.Main
-import Anisotropic.Rigidity.Defs
-import Anisotropic.Rigidity.Gap
-import Anisotropic.Rigidity.MinMax
+module
+
+public import Anisotropic.Density.Varrho
+public import Anisotropic.Entrywise.DiagModel
+public import Anisotropic.Framework.Domination
+public import Anisotropic.Framework.Model
+public import Anisotropic.Gaussian.Invariance
+public import Anisotropic.Gaussian.RotationLaw
+public import Anisotropic.Probability.NormBound.GaussianLower
+public import Anisotropic.Probability.NormBound.Main
+public import Anisotropic.Rigidity.Defs
+public import Anisotropic.Rigidity.Gap
+public import Anisotropic.Rigidity.MinMax
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

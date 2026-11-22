@@ -1,7 +1,11 @@
-import Anisotropic.EdgeUniv.Defs
-import Anisotropic.EdgeUniv.SmCount
-import Anisotropic.EdgeUniv.Eigen
-import Anisotropic.Framework.Domination
+module
+
+public import Anisotropic.EdgeUniv.Defs
+public import Anisotropic.EdgeUniv.SmCount
+public import Anisotropic.EdgeUniv.Eigen
+public import Anisotropic.Framework.Domination
+
+@[expose] public section
 
 open MeasureTheory ProbabilityTheory Matrix Filter Topology
 open scoped ProbabilityTheory ENNReal NNReal Matrix.Norms.L2Operator

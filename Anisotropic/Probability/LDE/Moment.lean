@@ -1,5 +1,9 @@
-import Anisotropic.Probability.LDE.Basic
-import Anisotropic.Probability.LDE.GraphBound
+module
+
+public import Anisotropic.Probability.LDE.Basic
+public import Anisotropic.Probability.LDE.GraphBound
+
+@[expose] public section
 
 /-!
 # Moment bounds for linear and off-diagonal quadratic forms

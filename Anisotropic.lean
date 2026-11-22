@@ -1,196 +1,202 @@
-import Anisotropic.Framework.Model
-import Anisotropic.Framework.Domination
-import Anisotropic.Framework.DominationUnion
-import Anisotropic.Framework.DominationMoment
-import Anisotropic.LinAlg.Basic
-import Anisotropic.Density.Basic
-import Anisotropic.LinAlg.Minor
-import Anisotropic.LinAlg.Blocks
-import Anisotropic.LinAlg.ResolventId
-import Anisotropic.LinAlg.Ward
-import Anisotropic.LinAlg.Expansion
-import Anisotropic.LinAlg.ResolventIdDiag
-import Anisotropic.LinAlg.Spectral
-import Anisotropic.Density.Poly
-import Anisotropic.Density.SelfConsistent
-import Anisotropic.LinAlg.OpBound
-import Anisotropic.Density.GenProp
-import Anisotropic.Density.Boundary
-import Anisotropic.Density.Varrho
-import Anisotropic.Probability.LDE.Basic
-import Anisotropic.Probability.NormBound.Walks
-import Anisotropic.Probability.LDE.GraphBound
-import Anisotropic.Density.Critical
-import Anisotropic.Probability.LDE.Moment
-import Anisotropic.Probability.NormBound.WalkCount
-import Anisotropic.Probability.LDE.Main
-import Anisotropic.Probability.NormBound.TraceMoment
-import Anisotropic.Probability.NormBound.Truncation
-import Anisotropic.Probability.LDE.Conditional
-import Anisotropic.Probability.Geometry.SphereNet
-import Anisotropic.Density.Ordering
-import Anisotropic.Probability.NormBound.Main
-import Anisotropic.Density.Stability.Domains
-import Anisotropic.Density.Stability.Quadratic
-import Anisotropic.Density.Stability.Defs
-import Anisotropic.Density.Structure
-import Anisotropic.Entrywise.DiagModel
-import Anisotropic.Entrywise.Defs
-import Anisotropic.Probability.NormBound.GaussianLower
-import Anisotropic.Entrywise.Indep
-import Anisotropic.Entrywise.Control
-import Anisotropic.Gaussian.Measurable
-import Anisotropic.Gaussian.Rotation
-import Anisotropic.Density.Count
-import Anisotropic.Entrywise.FA.MinorExpand
-import Anisotropic.Entrywise.Lattice
-import Anisotropic.Entrywise.Iterate
-import Anisotropic.Density.Stability.EdgeTools
-import Anisotropic.Entrywise.LambdaO
-import Anisotropic.Entrywise.FA.Bounds
-import Anisotropic.Density.Stability.EdgeTaylor
-import Anisotropic.Entrywise.LambdaOBound
-import Anisotropic.Density.Stability.Bulk
-import Anisotropic.Gaussian.BadEvent
-import Anisotropic.Density.Stability.EdgeSqRoot
-import Anisotropic.Entrywise.SelfCons
-import Anisotropic.Entrywise.Initial
-import Anisotropic.Density.Stability.Outside
-import Anisotropic.Density.Stability.EdgeStab
-import Anisotropic.Entrywise.Weak
-import Anisotropic.Gaussian.Ensemble
-import Anisotropic.Entrywise.FA.Vanish
-import Anisotropic.Gaussian.Spectral
-import Anisotropic.Gaussian.RotationLaw
-import Anisotropic.Gaussian.Invariance
-import Anisotropic.Entrywise.FA.Moment
-import Anisotropic.Gaussian.Parity
-import Anisotropic.Entrywise.FA.Main
-import Anisotropic.Gaussian.Lemma62
-import Anisotropic.Entrywise.Main
-import Anisotropic.Gaussian.Main
-import Anisotropic.Entrywise.Improved
-import Anisotropic.Comparison.Interpolation
-import Anisotropic.Comparison.Notation
-import Anisotropic.Comparison.Ladder
-import Anisotropic.Comparison.Ensemble
-import Anisotropic.Comparison.Gronwall
-import Anisotropic.Comparison.Words
-import Anisotropic.Comparison.Props
-import Anisotropic.Comparison.Brackets
-import Anisotropic.Comparison.RoughBound
-import Anisotropic.Comparison.TaggedWords
-import Anisotropic.Comparison.DegreeCount
-import Anisotropic.Comparison.RoughBoundUpd
-import Anisotropic.Comparison.WordBounds
-import Anisotropic.Endpoints.Resolvents
-import Anisotropic.Averaged.Defs
-import Anisotropic.Endpoints.Regions
-import Anisotropic.Comparison.Taylor
-import Anisotropic.Comparison.PrelimBounds
-import Anisotropic.Averaged.Chain
-import Anisotropic.Comparison.SelfConsistent
-import Anisotropic.Comparison.ColumnMoment
-import Anisotropic.Comparison.MainI
-import Anisotropic.Averaged.ClaimFour
-import Anisotropic.Averaged.Column
-import Anisotropic.Rigidity.Defs
-import Anisotropic.Rigidity.MinMax
-import Anisotropic.Rigidity.Exclusion
-import Anisotropic.Rigidity.Segment
-import Anisotropic.Rigidity.Deform
-import Anisotropic.Comparison.CountII
-import Anisotropic.Averaged.ClaimThree
-import Anisotropic.Rigidity.DeformFacts
-import Anisotropic.Comparison.HatA
-import Anisotropic.Comparison.MainII
-import Anisotropic.Density.Stability.Local
-import Anisotropic.GeneralT.Model
-import Anisotropic.Averaged.HatAvg
-import Anisotropic.GeneralT.Spectra
-import Anisotropic.Instances.MarchenkoPastur
-import Anisotropic.Averaged.Main
-import Anisotropic.Instances.Models
-import Anisotropic.GeneralT.Limit
-import Anisotropic.Endpoints.Main
-import Anisotropic.Endpoints.Local
-import Anisotropic.Rigidity.EdgeLow
-import Anisotropic.Rigidity.Gap
-import Anisotropic.GeneralT.Masses
-import Anisotropic.Rigidity.Interp
-import Anisotropic.Rigidity.Outside
-import Anisotropic.Rigidity.Local
-import Anisotropic.Rigidity.GaussCount
-import Anisotropic.GeneralT.Edges
-import Anisotropic.GeneralT.Main
-import Anisotropic.Rigidity.Counting
-import Anisotropic.Rigidity.Main
-import Anisotropic.GeneralT.Rigidity
-import Anisotropic.Main
-import Anisotropic.Wigner.Model
-import Anisotropic.Wigner.SelfConsistent
-import Anisotropic.Wigner.GOE
-import Anisotropic.Wigner.SelfConsistentII
-import Anisotropic.Wigner.Interp
-import Anisotropic.Wigner.Defs
-import Anisotropic.Wigner.Words
-import Anisotropic.Wigner.GaussRotate
-import Anisotropic.Wigner.Props
-import Anisotropic.Wigner.GaussDiag
-import Anisotropic.Wigner.RoughBound
-import Anisotropic.Wigner.Diag
-import Anisotropic.Wigner.HighOrder
-import Anisotropic.Wigner.Taylor
-import Anisotropic.Wigner.Third
-import Anisotropic.Wigner.AvgWords
-import Anisotropic.Wigner.Comparison
-import Anisotropic.Wigner.Main
-import Anisotropic.Wigner.AvgMain
-import Anisotropic.Wigner.NormTrunc
-import Anisotropic.Wigner.EdgeDefs
-import Anisotropic.Wigner.Norm
-import Anisotropic.Wigner.EdgeGap
-import Anisotropic.EdgeUniv.Defs
-import Anisotropic.Wigner.EdgeSupport
-import Anisotropic.EdgeUniv.Eigen
-import Anisotropic.EdgeUniv.SmCount
-import Anisotropic.EdgeUniv.Invariance
-import Anisotropic.Qdot.Defs
-import Anisotropic.Wigner.EdgeSqrt
-import Anisotropic.EdgeUniv.Derivative
-import Anisotropic.EdgeUniv.Reduction
-import Anisotropic.Wigner.Exclusion
-import Anisotropic.EdgeUniv.EntryBounds
-import Anisotropic.Wigner.AvgOutside
-import Anisotropic.Instances.MarchenkoPasturTwo
-import Anisotropic.Wigner.AvgOutsideW
-import Anisotropic.Wigner.Rigid
-import Anisotropic.Qdot.LocalLaw
-import Anisotropic.Qdot.Classical
-import Anisotropic.EdgeUniv.Swap
-import Anisotropic.EdgeUniv.RegS
-import Anisotropic.EdgeUniv.GOEEdge
-import Anisotropic.EdgeUniv.RegimeQ
-import Anisotropic.EdgeUniv.ThirdSum
-import Anisotropic.Qdot.EdgeDefs
-import Anisotropic.Wigner.EdgeLocal
-import Anisotropic.EdgeUniv.CompareQ
-import Anisotropic.Wigner.EdgeSym
-import Anisotropic.EdgeUniv.Main
-import Anisotropic.Wigner.EdgeRegime
-import Anisotropic.EdgeUniv.TWA
-import Anisotropic.EdgeUniv.GeneralT
-import Anisotropic.Qdot.RigidityLocal
-import Anisotropic.EdgeUniv.TWAT
-import Anisotropic.Qdot.EdgeCompare
-import Anisotropic.Wigner.EdgeSwap
-import Anisotropic.Qdot.EdgeSwap
-import Anisotropic.Qdot.EdgeRegime
-import Anisotropic.Qdot.EdgeThird
-import Anisotropic.Qdot.EdgeCompareMain
-import Anisotropic.Qdot.Rigidity
-import Anisotropic.Wigner.EdgeCompare
-import Anisotropic.Qdot.EdgeUniv
-import Anisotropic.Wigner.EdgeUniv
-import Anisotropic.EdgeUniv.TWAEdge
-import Anisotropic.EdgeUniv.TWAEdgeT
+module
+
+public import Anisotropic.MainDefs
+public import Anisotropic.Framework.Model
+public import Anisotropic.Framework.Domination
+public import Anisotropic.Framework.DominationUnion
+public import Anisotropic.Framework.DominationMoment
+public import Anisotropic.LinAlg.Basic
+public import Anisotropic.Density.Basic
+public import Anisotropic.LinAlg.Minor
+public import Anisotropic.LinAlg.Blocks
+public import Anisotropic.LinAlg.ResolventId
+public import Anisotropic.LinAlg.Ward
+public import Anisotropic.LinAlg.Expansion
+public import Anisotropic.LinAlg.ResolventIdDiag
+public import Anisotropic.LinAlg.Spectral
+public import Anisotropic.Density.Poly
+public import Anisotropic.Density.SelfConsistent
+public import Anisotropic.LinAlg.OpBound
+public import Anisotropic.Density.GenProp
+public import Anisotropic.Density.Boundary
+public import Anisotropic.Density.Varrho
+public import Anisotropic.Probability.LDE.Basic
+public import Anisotropic.Probability.NormBound.Walks
+public import Anisotropic.Probability.LDE.GraphBound
+public import Anisotropic.Density.Critical
+public import Anisotropic.Probability.LDE.Moment
+public import Anisotropic.Probability.NormBound.WalkCount
+public import Anisotropic.Probability.LDE.Main
+public import Anisotropic.Probability.NormBound.TraceMoment
+public import Anisotropic.Probability.NormBound.Truncation
+public import Anisotropic.Probability.LDE.Conditional
+public import Anisotropic.Probability.Geometry.SphereNet
+public import Anisotropic.Density.Ordering
+public import Anisotropic.Probability.NormBound.Main
+public import Anisotropic.Density.Stability.Domains
+public import Anisotropic.Density.Stability.Quadratic
+public import Anisotropic.Density.Stability.Defs
+public import Anisotropic.Density.Structure
+public import Anisotropic.Entrywise.DiagModel
+public import Anisotropic.Entrywise.Defs
+public import Anisotropic.Probability.NormBound.GaussianLower
+public import Anisotropic.Entrywise.Indep
+public import Anisotropic.Entrywise.Control
+public import Anisotropic.Gaussian.Measurable
+public import Anisotropic.Gaussian.Rotation
+public import Anisotropic.Density.Count
+public import Anisotropic.Entrywise.FA.MinorExpand
+public import Anisotropic.Entrywise.Lattice
+public import Anisotropic.Entrywise.Iterate
+public import Anisotropic.Density.Stability.EdgeTools
+public import Anisotropic.Entrywise.LambdaO
+public import Anisotropic.Entrywise.FA.Bounds
+public import Anisotropic.Density.Stability.EdgeTaylor
+public import Anisotropic.Entrywise.LambdaOBound
+public import Anisotropic.Density.Stability.Bulk
+public import Anisotropic.Gaussian.BadEvent
+public import Anisotropic.Density.Stability.EdgeSqRoot
+public import Anisotropic.Entrywise.SelfCons
+public import Anisotropic.Entrywise.Initial
+public import Anisotropic.Density.Stability.Outside
+public import Anisotropic.Density.Stability.EdgeStab
+public import Anisotropic.Entrywise.Weak
+public import Anisotropic.Gaussian.Ensemble
+public import Anisotropic.Entrywise.FA.Vanish
+public import Anisotropic.Gaussian.Spectral
+public import Anisotropic.Gaussian.RotationLaw
+public import Anisotropic.Gaussian.Invariance
+public import Anisotropic.Entrywise.FA.Moment
+public import Anisotropic.Gaussian.Parity
+public import Anisotropic.Entrywise.FA.Main
+public import Anisotropic.Gaussian.Lemma62
+public import Anisotropic.Entrywise.Main
+public import Anisotropic.Gaussian.Main
+public import Anisotropic.Entrywise.Improved
+public import Anisotropic.Comparison.Interpolation
+public import Anisotropic.Comparison.Notation
+public import Anisotropic.Comparison.Ladder
+public import Anisotropic.Comparison.Ensemble
+public import Anisotropic.Comparison.Gronwall
+public import Anisotropic.Comparison.Words
+public import Anisotropic.Comparison.Props
+public import Anisotropic.Comparison.Brackets
+public import Anisotropic.Comparison.RoughBound
+public import Anisotropic.Comparison.TaggedWords
+public import Anisotropic.Comparison.DegreeCount
+public import Anisotropic.Comparison.RoughBoundUpd
+public import Anisotropic.Comparison.WordBounds
+public import Anisotropic.Endpoints.Resolvents
+public import Anisotropic.Averaged.Defs
+public import Anisotropic.Endpoints.Regions
+public import Anisotropic.Comparison.Taylor
+public import Anisotropic.Comparison.PrelimBounds
+public import Anisotropic.Averaged.Chain
+public import Anisotropic.Comparison.SelfConsistent
+public import Anisotropic.Comparison.ColumnMoment
+public import Anisotropic.Comparison.MainI
+public import Anisotropic.Averaged.ClaimFour
+public import Anisotropic.Averaged.Column
+public import Anisotropic.Rigidity.Defs
+public import Anisotropic.Rigidity.MinMax
+public import Anisotropic.Rigidity.Exclusion
+public import Anisotropic.Rigidity.Segment
+public import Anisotropic.Rigidity.Deform
+public import Anisotropic.Comparison.CountII
+public import Anisotropic.Averaged.ClaimThree
+public import Anisotropic.Rigidity.DeformFacts
+public import Anisotropic.Comparison.HatA
+public import Anisotropic.Comparison.MainII
+public import Anisotropic.Density.Stability.Local
+public import Anisotropic.GeneralT.Model
+public import Anisotropic.Averaged.HatAvg
+public import Anisotropic.GeneralT.Spectra
+public import Anisotropic.Instances.MarchenkoPastur
+public import Anisotropic.Averaged.Main
+public import Anisotropic.Instances.Models
+public import Anisotropic.GeneralT.Limit
+public import Anisotropic.Endpoints.Main
+public import Anisotropic.Endpoints.Local
+public import Anisotropic.Rigidity.EdgeLow
+public import Anisotropic.Rigidity.Gap
+public import Anisotropic.GeneralT.Masses
+public import Anisotropic.Rigidity.Interp
+public import Anisotropic.Rigidity.Outside
+public import Anisotropic.Rigidity.Local
+public import Anisotropic.Rigidity.GaussCount
+public import Anisotropic.GeneralT.Edges
+public import Anisotropic.GeneralT.Main
+public import Anisotropic.Rigidity.Counting
+public import Anisotropic.Rigidity.Main
+public import Anisotropic.GeneralT.Rigidity
+public import Anisotropic.Main
+public import Anisotropic.Wigner.Model
+public import Anisotropic.Wigner.SelfConsistent
+public import Anisotropic.Wigner.GOE
+public import Anisotropic.Wigner.SelfConsistentII
+public import Anisotropic.Wigner.Interp
+public import Anisotropic.Wigner.Defs
+public import Anisotropic.Wigner.Words
+public import Anisotropic.Wigner.GaussRotate
+public import Anisotropic.Wigner.Props
+public import Anisotropic.Wigner.GaussDiag
+public import Anisotropic.Wigner.RoughBound
+public import Anisotropic.Wigner.Diag
+public import Anisotropic.Wigner.HighOrder
+public import Anisotropic.Wigner.Taylor
+public import Anisotropic.Wigner.Third
+public import Anisotropic.Wigner.AvgWords
+public import Anisotropic.Wigner.Comparison
+public import Anisotropic.Wigner.Main
+public import Anisotropic.Wigner.AvgMain
+public import Anisotropic.Wigner.NormTrunc
+public import Anisotropic.Wigner.EdgeDefs
+public import Anisotropic.Wigner.Norm
+public import Anisotropic.Wigner.EdgeGap
+public import Anisotropic.EdgeUniv.Defs
+public import Anisotropic.Wigner.EdgeSupport
+public import Anisotropic.EdgeUniv.Eigen
+public import Anisotropic.EdgeUniv.SmCount
+public import Anisotropic.EdgeUniv.Invariance
+public import Anisotropic.Qdot.Defs
+public import Anisotropic.Wigner.EdgeSqrt
+public import Anisotropic.EdgeUniv.Derivative
+public import Anisotropic.EdgeUniv.Reduction
+public import Anisotropic.Wigner.Exclusion
+public import Anisotropic.EdgeUniv.EntryBounds
+public import Anisotropic.Wigner.AvgOutside
+public import Anisotropic.Instances.MarchenkoPasturTwo
+public import Anisotropic.Wigner.AvgOutsideW
+public import Anisotropic.Wigner.Rigid
+public import Anisotropic.Qdot.LocalLaw
+public import Anisotropic.Qdot.Classical
+public import Anisotropic.EdgeUniv.Swap
+public import Anisotropic.EdgeUniv.RegS
+public import Anisotropic.EdgeUniv.GOEEdge
+public import Anisotropic.EdgeUniv.RegimeQ
+public import Anisotropic.EdgeUniv.ThirdSum
+public import Anisotropic.Qdot.EdgeDefs
+public import Anisotropic.Wigner.EdgeLocal
+public import Anisotropic.EdgeUniv.CompareQ
+public import Anisotropic.Wigner.EdgeSym
+public import Anisotropic.EdgeUniv.Main
+public import Anisotropic.Wigner.EdgeRegime
+public import Anisotropic.EdgeUniv.TWA
+public import Anisotropic.EdgeUniv.GeneralT
+public import Anisotropic.Qdot.RigidityLocal
+public import Anisotropic.EdgeUniv.TWAT
+public import Anisotropic.Qdot.EdgeCompare
+public import Anisotropic.Wigner.EdgeSwap
+public import Anisotropic.Qdot.EdgeSwap
+public import Anisotropic.Qdot.EdgeRegime
+public import Anisotropic.Qdot.EdgeThird
+public import Anisotropic.Qdot.EdgeCompareMain
+public import Anisotropic.Qdot.Rigidity
+public import Anisotropic.Wigner.EdgeCompare
+public import Anisotropic.Qdot.EdgeUniv
+public import Anisotropic.Wigner.EdgeUniv
+public import Anisotropic.EdgeUniv.TWAEdge
+public import Anisotropic.EdgeUniv.TWAEdgeT
+
+@[expose] public section
+
